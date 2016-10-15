@@ -1,0 +1,69 @@
+$teal: #009688;
+
+header {
+	width: 100%;
+  height: 64px;
+  background-color: $teal;
+}
+
+header .container {
+  height: 100%;
+  position: relative;
+}
+
+#logo {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 36px;
+  line-height: 36px;
+  height: 40px;
+
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+#logo a {
+  color: #eee;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+    background-color: transparent;
+  }
+}
+
+header nav {
+  position: absolute;
+  height: 24px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+#navbar {
+  float: left;
+  margin: 0;
+}
+
+#navbar > li {
+  float: left;
+  position: relative;
+  display: block;
+  margin-left: 20px;
+}
+
+#navbar > li > a {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: #eee;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+    background-color: transparent;
+  }
+}

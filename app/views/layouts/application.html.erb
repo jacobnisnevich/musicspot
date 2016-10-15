@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Musicspot</title>
-    <%= csrf_meta_tags %>
+    <title><%= full_title(yield(:title)) %></title>
 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Quicksand" rel="stylesheet">
+
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="container">
+        <div id="logo">
+          <%= link_to "MusicSpot", '#' %>
+        </div>
+        <nav>
+          <ul id="navbar">
+            <li><%= link_to "Home", '#' %></li>
+            <li><%= link_to "Find Groups", '#' %></li>
+            <li><%= link_to "Find Events", '#' %></li>
+            <li><%= link_to "Log in", '#' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
