@@ -11,21 +11,7 @@
   </head>
 
   <body>
-    <header>
-      <div class="container">
-        <div id="logo">
-          <%= link_to "MusicSpot", '#' %>
-        </div>
-        <nav>
-          <ul id="navbar">
-            <li><%= link_to "Home", '#' %></li>
-            <li><%= link_to "Find Groups", '#' %></li>
-            <li><%= link_to "Find Events", '#' %></li>
-            <li><%= link_to "Log in", '#' %></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <%= render 'layouts/header' %>
     <div class="container">
       <%= yield %>
     </div>

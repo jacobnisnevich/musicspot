@@ -5,12 +5,22 @@ header {
   height: 64px;
   background-color: $teal;
   box-shadow: #777 0px 2px 5px;
+
+  .container {
+    height: 100%;
+    position: relative;
+  }
+
+  nav {
+    position: absolute;
+    height: 24px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
 }
 
-header .container {
-  height: 100%;
-  position: relative;
-}
 
 #logo {
   font-family: 'Quicksand', sans-serif;
@@ -23,48 +33,39 @@ header .container {
   top: 0;
   bottom: 0;
   margin: auto;
-}
 
-#logo a {
-  color: #eee;
-  text-decoration: none;
+  a {
+    color: #eee;
+    text-decoration: none;
 
-  &:hover {
-    color: #fff;
-    background-color: transparent;
+    &:hover {
+      color: #fff;
+      background-color: transparent;
+    }
   }
-}
-
-header nav {
-  position: absolute;
-  height: 24px;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
 }
 
 #navbar {
   float: left;
   margin: 0;
-}
 
-#navbar > li {
-  float: left;
-  position: relative;
-  display: block;
-  margin-left: 20px;
-}
+  > li {
+    float: left;
+    position: relative;
+    display: block;
+    margin-left: 20px;
+  }
 
-#navbar > li > a {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 18px;
-  line-height: 24px;
-  color: #eee;
-  text-decoration: none;
+  > li > a {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    color: #eee;
+    text-decoration: none;
 
-  &:hover {
-    color: #fff;
-    background-color: transparent;
+    &:hover {
+      color: #fff;
+      background-color: transparent;
+    }
   }
 }
