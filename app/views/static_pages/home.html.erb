@@ -1,8 +1,11 @@
 <% provide(:title, "Home") %>
-<h1>Get started now!</h1>
+<% if current_user %>
+<% else %>
+  <h1>Get started now!</h1>
 
-<div class="center">
-  <div class="button">
-    <%= link_to "Sign up", signup_path %>
+  <div class="center">
+    <div class="button">
+      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+    </div>
   </div>
-</div>
+<% end %>

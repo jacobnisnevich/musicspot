@@ -1,14 +1,18 @@
 <header>
   <div class="container">
     <div id="logo">
-      <%= link_to "MusicSpot", '#' %>
+      <%= link_to "MusicSpot", root_path %>
     </div>
     <nav>
       <ul id="navbar">
         <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Find Groups", '#' %></li>
-        <li><%= link_to "Find Events", '#' %></li>
-        <li><%= link_to "Log in", '#' %></li>
+        <li><%= link_to "Groups", '#' %></li>
+        <li><%= link_to "Events", '#' %></li>
+        <% if current_user %>
+          <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+        <% else %>
+          <li><%= link_to "Log in", "/auth/facebook", id: "sign_in" %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
