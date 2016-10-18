@@ -9,6 +9,7 @@
         <li><%= link_to "Groups", '#' %></li>
         <li><%= link_to "Events", '#' %></li>
         <% if current_user %>
+          <li><%= link_to "Profile", profile_path(:id => current_user.uid), id: "profile" %></li>
           <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
         <% else %>
           <li><%= link_to "Log in", "/auth/facebook", id: "sign_in" %></li>

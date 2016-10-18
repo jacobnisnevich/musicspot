@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  get 'users/new'
-
   root 'static_pages#home'
-  get 'static_pages/home'
+
+  get '/profile/:id', to: 'profiles#show', as: 'profile'
   get '/signup',  to: 'users#new'
   get '/tos', to: 'static_pages#tos'
   get '/privacy', to: 'static_pages#privacy'
