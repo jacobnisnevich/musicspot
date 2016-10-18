@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
   root 'static_pages#home'
 
+  get '/groups', to: 'groups#home'
+  get '/events', to: 'events#home'
   get '/profile/:id', to: 'profiles#show', as: 'profile'
   get '/signup',  to: 'users#new'
   get '/tos', to: 'static_pages#tos'

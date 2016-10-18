@@ -17,7 +17,12 @@ p, ol, ul, td {
 h1 {
   font-family: 'Quicksand', sans-serif;
   font-weight: 300;
-  margin: 30px 10px;
+  margin: 30px 0px;
+  padding: 20px;
+  background-color: #FFF;
+  border-radius: 2px;
+  border-left: 3px solid #4DB6AC;
+  box-shadow: #DDD 2px 2px 10px;
 }
 
 pre {
