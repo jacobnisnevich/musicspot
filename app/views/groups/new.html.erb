@@ -1,0 +1,26 @@
+<% provide(:title, "New Group") %>
+<h1>Create New Group</h1>
+
+<%= form_for @group, :url => { :controller => :groups, :action => :submit} do |f| %>
+  <div id="new-group-form">
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.label :location %>
+      <%= f.text_field :location, class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.label :group_type %>
+      <%= f.text_field :group_type, class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description, class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.submit "Create Group", class: "button" %>
+    </div>
+  </div>
+<% end %>

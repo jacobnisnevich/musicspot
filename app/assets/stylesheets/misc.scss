@@ -11,16 +11,17 @@
   display: inline-block;
   border-radius: 5px;
   border-bottom: 5px solid #26A69A;
+  cursor: pointer;
 
-  -webkit-transition: all 0.1s;
-  transition: all 0.1s;
+  -webkit-transition: all 0.05s linear;
+  transition: all 0.05s linear;
 
   &:hover {
     border-bottom: 0px solid #26A69A;
     margin-top: 5px;
 
-    -webkit-transition: all 0.1s;
-    transition: all 0.1s;
+    -webkit-transition: all 0.05s linear;
+    transition: all 0.05s linear;
   }
 
   a {
@@ -31,4 +32,16 @@
     padding: 15px;
     display: block;
   }
+}
+
+input[type="submit"] {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  font-family: 'Quicksand', sans-serif;
+  text-decoration: none;
+  font-size: 18px;
+  color: #fff;
+  padding: 10px;
+  display: block;
 }

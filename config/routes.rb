@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-
   root 'static_pages#home'
 
   get '/groups', to: 'groups#home'
+  get '/groups/new', to: 'groups#new'
+  post '/groups/new/submit', to: 'groups#submit'
+
   get '/events', to: 'events#home'
   get '/profile/:id', to: 'profiles#show', as: 'profile'
   get '/signup',  to: 'users#new'

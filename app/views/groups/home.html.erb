@@ -1,2 +1,32 @@
 <% provide(:title, "Groups") %>
 <h1>Groups</h1>
+
+<div id="find-groups-top">
+  <div id="find-groups-header">
+    <div id="find-groups-title">Find Groups</div>
+    <div class="button">
+      <%= link_to "New Group", "/groups/new", id: "new-group-button" %>
+    </div>
+  </div>
+
+  <div id="find-groups-search-container">
+    <div id="find-groups-searches">
+      <div id="find-groups-by-name">
+        <label>Search</label>
+        <input type="text"></input>
+      </div>
+      <div id="find-groups-by-zip">
+        <label>Zip code</label>
+        <input type="text"></input>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="find-groups-results-container">
+  <div id="find-groups-results-header">
+    <div id="find-groups-results-title">Results</div>
+    <div id="find-groups-results-count">X Found</div>
+  </div>
+</div>
