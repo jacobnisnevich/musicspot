@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
   def submit
     @group = Group.new(params.require(:group).permit(:name, :location, :description, :group_type))
     @group.users << current_user
+    @group.admin_users << current_user
 
     @group.save
 

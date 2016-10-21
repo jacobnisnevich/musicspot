@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :memberships
+  has_many :admins
   has_many :groups, :through => :memberships
+  has_many :admined_groups, :through => :admins, :source => :groups
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
