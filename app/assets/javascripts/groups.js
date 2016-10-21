@@ -14,7 +14,7 @@ function updateGroups(groups) {
   groups.forEach(function(group) {
     $('#find-groups-results').append('<div class="find-groups-results-group" data-id="' + group.id + '">' +
         '<div class="group-header">' +
-          '<div class="group-name">' + group.name + '</div>' +
+          '<div class="group-name"><a href="/group/' + group.id + '">' + group.name + '</a></div>' +
           '<div class="group-location">' + group.location + '</div>' +
         '</div>' +
         '<div class="group-body">' +
