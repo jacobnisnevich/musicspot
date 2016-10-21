@@ -15,12 +15,13 @@
     <div id="find-groups-searches">
       <div id="find-groups-by-name">
         <label>Search</label>
-        <input type="text"></input>
+        <input type="text" id="search-name-input"></input>
       </div>
       <div id="find-groups-by-zip">
         <label>Zip code</label>
-        <input type="text"></input>
+        <input type="text" id="search-zip-input"></input>
       </div>
+      <div id="search-groups-button" class="button">Search</div>
     </div>
   </div>
 
@@ -29,6 +30,20 @@
 <div id="find-groups-results-container">
   <div id="find-groups-results-header">
     <div id="find-groups-results-title">Results</div>
-    <div id="find-groups-results-count">X Found</div>
+    <div id="find-groups-results-count"><%= @groups.size %> Found</div>
+  </div>
+  <div id="find-groups-results">
+    <% @groups.each do |group| %>
+      <div class="find-groups-results-group" data-id="<%= group.id %>">
+        <div class="group-header">
+          <div class="group-name"><%= group.name %></div>
+          <div class="group-location"><%= group.location %></div>
+        </div>
+        <div class="group-body">
+          <div class="group-description"><%= group.description %></div>
+          <div class="group-type"><%= group.group_type %></div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
