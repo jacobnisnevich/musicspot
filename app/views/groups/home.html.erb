@@ -4,9 +4,11 @@
 <div id="find-groups-top">
   <div id="find-groups-header">
     <div id="find-groups-title">Find Groups</div>
-    <div class="button">
-      <%= link_to "New Group", "/groups/new", id: "new-group-button" %>
-    </div>
+    <% if current_user %>
+      <div class="button">
+        <%= link_to "New Group", "/groups/new", id: "new-group-button" %>
+      </div>
+    <% end %>
   </div>
 
   <div id="find-groups-search-container">
