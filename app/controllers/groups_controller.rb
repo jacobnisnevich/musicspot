@@ -26,4 +26,10 @@ class GroupsController < ApplicationController
 
     render json: @groups.map!(&:as_json).to_json
   end
+
+  def show
+    @group = Group.find_by(id: params[:id])
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+  end
 end

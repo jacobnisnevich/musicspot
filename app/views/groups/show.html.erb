@@ -1,0 +1,14 @@
+<h1><%= @group.name %></h1>
+
+<h1>Description</h1>
+<%= @group.description %>
+
+<h1>Admins</h1>
+<% @group_admins.each do |admin| %>
+<div><%= admin.name %></div>
+<% end %>
+
+<h1>Members</h1>
+<% @group_members.each do |member| %>
+<div><%= member.name %></div>
+<% end %>
