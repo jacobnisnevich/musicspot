@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
   def home
-    @groups = Group.all.to_a
+    if params[:name]
+      @groups = Group.where("lower(name) LIKE ?", "%#{params[:name].downcase}%").to_a
+    else
+      @groups = Group.all.to_a
+    end
   end
 
   def new
@@ -15,16 +19,6 @@ class GroupsController < ApplicationController
     @group.save
 
     redirect_to '/groups'
-  end
-
-  def update
-    if params[:name]
-      @groups = Group.where("lower(name) LIKE ?", "%#{params[:name].downcase}%").to_a
-    else 
-      # do nothing
-    end
-
-    render json: @groups.map!(&:as_json).to_json
   end
 
   def show

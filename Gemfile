@@ -51,3 +51,6 @@ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Facebook OAuth
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
+
+#bootstrap stuff
+gem 'bootstrap_form', '2.5.2'
