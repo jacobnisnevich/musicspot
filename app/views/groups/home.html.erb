@@ -13,7 +13,14 @@
 
   <div id="find-groups-search-container">
   <%= form_tag groups_path, :id => 'find-groups-searches', :method => 'get' do %>
-    <%= text_field_tag :name, params[:name], placeholder: "Search groups" %>
+    <div id="find-groups-by-name">
+      <label>Name</label>
+        <%= text_field_tag :name, params[:name], :id => 'search-name-input', placeholder: "Enter Name" %>
+    </div>
+    <div id="find-groups-by-zip">
+      <label>Zip Code</label>
+        <%= text_field_tag :zip, params[:zip], :id => 'search-zip-input', placeholder: "Enter Zip" %>
+    </div>
     <%= submit_tag "Search", :id => 'search-groups-button', :class => 'button' %>
   <% end %>
   </div>
