@@ -12,9 +12,9 @@
   </div>
 
   <div id="find-groups-search-container">
-  <%= bootstrap_form_tag url: :groups, method: "get", layout: :inline, :id => 'find-groups-searches' do |f| %>
-    <%= f.text_field :name, skip_label: true, placeholder: "Search groups" %>
-    <%= f.submit :search, id: nil %>
+  <%= form_tag groups_path, :id => 'find-groups-searches', :method => 'get' do %>
+    <%= text_field_tag :name, params[:name], placeholder: "Search groups" %>
+    <%= submit_tag "Search", :id => 'search-groups-button', :class => 'button' %>
   <% end %>
   </div>
 </div>
