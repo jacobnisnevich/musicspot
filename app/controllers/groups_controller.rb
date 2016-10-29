@@ -1,6 +1,19 @@
+require 'GoogleMapsAPI'
+
 class GroupsController < ApplicationController
+
   def home
-    if params[:name]
+    if params[:name] && params[:zip]
+      # if name and zip
+      @groups = Group.where("lower(name) LIKE ?", "%#{params[:name].downcase}%").to_a
+
+      destinations_zips = @groups.map { |g| g.location }
+
+      destinations = GoogleMapsAPI.get_distances(params[:zip], destinations_zips)
+    elsif params[:name].blank? && params[:zip]
+      # if zip and no name
+
+    elsif params[:name] && params[:zip].blank?
       @groups = Group.where("lower(name) LIKE ?", "%#{params[:name].downcase}%").to_a
     else
       @groups = Group.all.to_a
