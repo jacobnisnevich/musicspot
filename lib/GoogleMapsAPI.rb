@@ -9,9 +9,7 @@ class GoogleMapsAPI
 
   attr_accessor :distances
 
-  def initialize(response)
-    destinations = response['destination_addresses']
-
+  def initialize(response, destinations)
     @distances = {}
     @durations = {}
 
@@ -31,7 +29,7 @@ class GoogleMapsAPI
   def self.get_distances(origin, destinations)
     response = get("/json?units=imperial&origins=#{origin}&destinations=#{destinations.join('|')}&key=#{ENV["wunderground_key"]}")
     if response.success?
-      new(response)
+      new(response, destinations)
     else
       raise response.response
     end
