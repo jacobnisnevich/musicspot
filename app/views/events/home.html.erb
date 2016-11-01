@@ -1,2 +1,34 @@
 <% provide(:title, "Events") %>
 <h1>Events</h1>
+
+<div id="find-events-search-container">
+  <div id="find-events-search-title">Find Events</div>
+  <div id="find-events-searches">
+    <div id="find-events-by-location">
+      <label>Near</label>
+      <input type="text" id="search-location-input"></input>
+    </div>
+    <div id="search-events-button" class="button">Search</div>
+  </div>
+</div>
+
+<div id="find-events-results-container">
+  <div id="find-events-results-header">
+    <div id="find-events-results-title">Results</div>
+    <div id="find-events-results-count"><%= @events.size %> Found</div>
+  </div>
+  <div id="find-events-results">
+    <% @events.each do |event| %>
+      <div class="find-events-results-event" data-id="<%= event.id %>">
+        <div class="event-header">
+          <div class="event-name"><%= event.name %></div>
+          <div class="event-location"><%= event.location %></div>
+        </div>
+        <div class="event-body">
+          <div class="event-description"><%= event.description %></div>
+          <div class="event-date"><%= event.start_datetime.to_date %></div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
