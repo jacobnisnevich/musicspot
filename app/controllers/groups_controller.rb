@@ -1,7 +1,9 @@
 require 'GoogleMapsAPI'
+require 'search/SortStrategy'
+require 'search/DistanceSort'
+require 'search/TimeSort'
 
 class GroupsController < ApplicationController
-
   def home
     if params[:name].blank?
       @groups = Group.all.to_a
@@ -11,9 +13,13 @@ class GroupsController < ApplicationController
 
     if !(params[:zip].blank?)
       destinations_zips = @groups.map { |g| g.location }
-      destinations = GoogleMapsAPI.get_distances(params[:zip], destinations_zips)
-
-      @groups = @groups.sort_by { |x| destinations.distances[x.location][:value] }
+      @destinations = GoogleMapsAPI.get_distances(params[:zip], destinations_zips)
+      if params[:search] == "distance"
+        strategy = DistanceSort.new
+      else
+        strategy = TimeSort.new
+      end
+      @groups = @groups.sort_by { |group| @destinations.distances[group.location][:value] }
     end
   end
 
