@@ -3,20 +3,13 @@ require 'GoogleMapsAPI'
 class GroupsController < ApplicationController
 
   def home
-    if params[:name].blank? && params[:zip].blank?
+    if params[:name].blank?
       @groups = Group.all.to_a
-    elsif params[:name].blank? && !(params[:zip].blank?)
-      @groups = Group.all.to_a
-
-      destinations_zips = @groups.map { |g| g.location }
-      destinations = GoogleMapsAPI.get_distances(params[:zip], destinations_zips)
-
-      @groups = @groups.sort_by { |x| destinations.distances[x.location][:value] }
-    elsif !(params[:name].blank?) && params[:zip].blank?
-      @groups = Group.where("lower(name) LIKE ?", "%#{params[:name].downcase}%").to_a
     else
       @groups = Group.where("lower(name) LIKE ?", "%#{params[:name].downcase}%").to_a
+    end
 
+    if !(params[:zip].blank?)
       destinations_zips = @groups.map { |g| g.location }
       destinations = GoogleMapsAPI.get_distances(params[:zip], destinations_zips)
 
