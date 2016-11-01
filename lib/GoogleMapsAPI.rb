@@ -7,7 +7,7 @@ class GoogleMapsAPI
 
   base_uri 'maps.googleapis.com/maps/api/distancematrix'
 
-  attr_accessor :distances
+  attr_accessor :distances, :durations
 
   def initialize(response, destinations)
     @distances = {}
