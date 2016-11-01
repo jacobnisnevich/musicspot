@@ -21,6 +21,12 @@
       <label>Zip Code</label>
         <%= text_field_tag :zip, params[:zip], :id => 'search-zip-input', placeholder: "Enter Zip" %>
     </div>
+    <div id="zip-search-strategy" style="display: none">
+      <%= radio_button_tag(:search, "distance") %>
+      <%= label_tag(:search_dist, "Search by distance") %>
+      <%= radio_button_tag(:search, "time") %>
+      <%= label_tag(:search_time, "Search by time") %>
+    </div>
     <%= submit_tag "Search", :id => 'search-groups-button', :class => 'button' %>
   <% end %>
   </div>
@@ -36,6 +42,11 @@
       <div class="find-groups-results-group" data-id="<%= group.id %>">
         <div class="group-header">
           <div class="group-name"><a href="/group/<%= group.id %>"><%= group.name %></a></div>
+          <% if defined?(@destinations) %>
+            <div id="group-header-location-text">
+              <%= @destinations.distances[group.location][:value] %>
+            </div>
+          <% end %>
           <div class="group-location"><%= group.location %></div>
         </div>
         <div class="group-body">
@@ -46,3 +57,13 @@
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+$("#search-zip-input").keyup(function() {
+  if($(this).val()) {
+      $("#zip-search-strategy").show();
+  } else {
+      $("#zip-search-strategy").hide();
+  }
+})
+</script>
