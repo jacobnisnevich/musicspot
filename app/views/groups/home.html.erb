@@ -12,19 +12,18 @@
   </div>
 
   <div id="find-groups-search-container">
-    <div id="find-groups-searches">
-      <div id="find-groups-by-name">
-        <label>Search</label>
-        <input type="text" id="search-name-input"></input>
-      </div>
-      <div id="find-groups-by-zip">
-        <label>Zip code</label>
-        <input type="text" id="search-zip-input"></input>
-      </div>
-      <div id="search-groups-button" class="button">Search</div>
+  <%= form_tag groups_path, :id => 'find-groups-searches', :method => 'get' do %>
+    <div id="find-groups-by-name">
+      <label>Name</label>
+        <%= text_field_tag :name, params[:name], :id => 'search-name-input', placeholder: "Enter Name" %>
     </div>
+    <div id="find-groups-by-zip">
+      <label>Zip Code</label>
+        <%= text_field_tag :zip, params[:zip], :id => 'search-zip-input', placeholder: "Enter Zip" %>
+    </div>
+    <%= submit_tag "Search", :id => 'search-groups-button', :class => 'button' %>
+  <% end %>
   </div>
-
 </div>
 
 <div id="find-groups-results-container">

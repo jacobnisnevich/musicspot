@@ -51,3 +51,5 @@ gem 'wdm', '>= 0.1.0', platforms: [:mingw, :mswin, :x64_mingw]
 # Facebook OAuth
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
+
+gem 'httparty'
