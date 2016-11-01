@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
       else
         strategy = TimeSort.new
       end
-      @groups = @groups.sort_by { |group| @destinations.distances[group.location][:value] }
+      @groups = strategy.sort(@groups, @destinations)
     end
   end
 
