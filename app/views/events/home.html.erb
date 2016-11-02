@@ -26,7 +26,7 @@
         </div>
         <div class="event-body">
           <div class="event-description"><%= event.description %></div>
-          <div class="event-date"><%= event.start_datetime.to_date %></div>
+          <div class="event-date"><%= event.start_datetime.to_date unless event.start_datetime.nil? %></div>
         </div>
       </div>
     <% end %>

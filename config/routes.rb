@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get '/group/:id', to: 'groups#show', as: 'group_page'
 
   get '/events', to: 'events#home'
+  get '/events/new', to: 'events#new'
+  post '/events/new/submit', to: 'events#submit'
+
   get '/profile/:id', to: 'profiles#show', as: 'profile'
   get '/signup',  to: 'users#new'
   get '/tos', to: 'static_pages#tos'
