@@ -5,10 +5,13 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @group_id = params[:id]
   end
 
   def submit
     @event = Event.new(params.require(:event).permit(:end_datetime, :name, :location, :description, :start_datetime))
+    @event.groups << Group.find_by(@group_id)
+
     @event.save
 
     redirect_to '/events'

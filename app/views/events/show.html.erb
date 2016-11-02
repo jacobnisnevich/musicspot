@@ -10,4 +10,8 @@
   <div class="event-data"> <%= @event.end_datetime %> </div>
   <div class="event-subtitle"> Description </div>
   <div class="event-data"> <%= @event.description %> </div>
+  <div class="event-subtitle"> Hosted By </div>
+  <% @event.groups.each do |group| %>
+  	<div class="event-data"> <%= group.name %> </div>
+  <% end %>
 </div>

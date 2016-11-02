@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   get '/groups/new', to: 'groups#new'
   post '/groups/new/submit', to: 'groups#submit'
   get '/group/:id', to: 'groups#show', as: 'group_page'
+  get '/group/:id/newEvent', to: 'events#new'
 
   get '/events', to: 'events#home'
-  get '/events/new', to: 'events#new'
   post '/events/new/submit', to: 'events#submit'
   get 'event/:id', to: 'events#show', as: 'event_page'
 
