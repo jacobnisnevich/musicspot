@@ -1,3 +1,7 @@
+require 'GoogleMapsAPI'
+require 'search/DistanceSort'
+require 'search/TimeSort'
+
 class GroupsController < ApplicationController
   def home
     if params[:name].blank?

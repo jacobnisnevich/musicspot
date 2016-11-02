@@ -38,29 +38,35 @@
     <div id="find-groups-results-count"><%= @groups.size %> Found</div>
   </div>
   <div id="find-groups-results">
-    <% @groups.each do |group| %>
-      <div class="find-groups-results-group" data-id="<%= group.id %>">
-        <div class="group-header">
-          <div class="group-name"><a href="/group/<%= group.id %>"><%= group.name %></a></div>
-          <% if defined?(@destinations) %>
-            <% if @strategy == "distance" %>
-              <div id="group-header-location-text">
-                <span><%= @destinations.distances[group.location][:text] %> away</span>
-              </div>
-            <% elsif @strategy == "time" %>
-              <div id="group-header-location-text">
-                <span><%= @destinations.durations[group.location][:text] %> away</span>
-              </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Location</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @groups.each do |group| %>
+          <tr>
+            <td><%= group.name %></td>
+            <td><%= group.description %></td>
+            <td><%= group.group_type %></td>
+            <td><%= group.location %></td>
+            <% if defined?(@destinations) %>
+              <% if @strategy == "distance" %>
+                <td><%= @destinations.distances[group.location][:text] %> away</td>
+              <% elsif @strategy == "time" %>
+                <td><%= @destinations.durations[group.location][:text] %> away</td>
+              <% end %>
             <% end %>
-          <% end %>
-          <div class="group-location"><%= group.location %></div>
-        </div>
-        <div class="group-body">
-          <div class="group-description"><%= group.description %></div>
-          <div class="group-type"><%= group.group_type %></div>
-        </div>
-      </div>
-    <% end %>
+            <td><a href="/group/<%= group.id %>"><i class="material-icons">open_in_browser</i></a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
 
