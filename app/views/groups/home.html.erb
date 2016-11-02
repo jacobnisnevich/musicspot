@@ -43,9 +43,15 @@
         <div class="group-header">
           <div class="group-name"><a href="/group/<%= group.id %>"><%= group.name %></a></div>
           <% if defined?(@destinations) %>
-            <div id="group-header-location-text">
-              <span><%= @destinations.distances[group.location][:text] %> away</span>
-            </div>
+            <% if @strategy == "distance" %>
+              <div id="group-header-location-text">
+                <span><%= @destinations.distances[group.location][:text] %> away</span>
+              </div>
+            <% elsif @strategy == "time" %>
+              <div id="group-header-location-text">
+                <span><%= @destinations.durations[group.location][:text] %> away</span>
+              </div>
+            <% end %>
           <% end %>
           <div class="group-location"><%= group.location %></div>
         </div>
