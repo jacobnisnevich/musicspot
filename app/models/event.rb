@@ -1,3 +1,4 @@
 class Event < ApplicationRecord
-	belongs_to :group, optional: true
+	has_many :group_events
+	has_many :groups, :through => :group_events
 end
