@@ -10,15 +10,14 @@
   background-color: #80CBC4;
   display: inline-block;
   border-radius: 5px;
-  border-bottom: 5px solid #26A69A;
   cursor: pointer;
+  box-shadow: 2px 2px 10px #CCC;
 
   -webkit-transition: all 0.05s linear;
   transition: all 0.05s linear;
 
   &:hover {
-    border-bottom: 0px solid #26A69A;
-    margin-top: 5px;
+    box-shadow: 4px 4px 10px #CCC;
 
     -webkit-transition: all 0.05s linear;
     transition: all 0.05s linear;
@@ -35,13 +34,25 @@
 }
 
 input[type="submit"] {
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
+  border: 0;
   font-family: 'Quicksand', sans-serif;
   text-decoration: none;
   font-size: 18px;
   color: #fff;
   padding: 10px;
   display: block;
+}
+
+input.button {
+  box-shadow: 2px 2px 10px #1d978c;
+
+  -webkit-transition: all 0.05s linear;
+  transition: all 0.05s linear;
+
+  &:hover {
+    box-shadow: 4px 4px 10px #1d978c;
+
+    -webkit-transition: all 0.05s linear;
+    transition: all 0.05s linear;
+  }
 }
