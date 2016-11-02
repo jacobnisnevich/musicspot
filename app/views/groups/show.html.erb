@@ -34,6 +34,11 @@
       <div id="group-nav-events">Events</div>
       <div id="group-nav-members">Members</div>
       <div id="group-nav-about">About</div>
+      <% if current_user && @group_admins.include?(current_user) %>
+        <div id="group-nav-create-event">
+          <%= link_to "New Event", "#", id: "new-event-button" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
