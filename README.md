@@ -1,24 +1,5 @@
-# README
+# MusicSpot
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MusicSpot is a web application to find and manage musical groups. The goal of MusicSpot is to facilitate organizing and running musical groups. Users can organize their internal processes as well as maintain a public image.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Built using Ruby on Rails.

@@ -21,12 +21,12 @@
     <% @events.each do |event| %>
       <div class="find-events-results-event" data-id="<%= event.id %>">
         <div class="event-header">
-          <div class="event-name"><%= event.name %></div>
+          <div class="event-name"><a href="/event/<%= event.id %>"><%= event.name %></a></div>
           <div class="event-location"><%= event.location %></div>
         </div>
         <div class="event-body">
           <div class="event-description"><%= event.description %></div>
-          <div class="event-date"><%= event.start_datetime.to_date %></div>
+          <div class="event-date"><%= event.start_datetime.to_date unless event.start_datetime.nil? %></div>
         </div>
       </div>
     <% end %>

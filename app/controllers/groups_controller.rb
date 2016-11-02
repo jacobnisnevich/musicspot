@@ -32,9 +32,11 @@ class GroupsController < ApplicationController
     @group.users << current_user
     @group.admin_users << current_user
 
-    @group.save
-
-    redirect_to '/groups'
+    if (@group.save)
+      redirect_to '/groups'
+    else
+      render 'new'
+    end
   end
 
   def show
