@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/events', to: 'events#home'
   get '/events/new', to: 'events#new'
   post '/events/new/submit', to: 'events#submit'
+  get 'event/:id', to: 'events#show', as: 'event_page'
 
   get '/profile/:id', to: 'profiles#show', as: 'profile'
   get '/signup',  to: 'users#new'

@@ -13,4 +13,9 @@ class EventsController < ApplicationController
 
     redirect_to '/events'
   end
+
+  def show
+    @full_width = true
+    @event = Event.find_by(id: params[:id])
+  end
 end
