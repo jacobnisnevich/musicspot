@@ -56,3 +56,11 @@ input.button {
     transition: all 0.05s linear;
   }
 }
+
+a i {
+  color: #333;
+
+  &:hover {
+    text-shadow: 2px 2px 5px #CCC;
+  }
+}

@@ -18,17 +18,27 @@
     <div id="find-events-results-count"><%= @events.size %> Found</div>
   </div>
   <div id="find-events-results">
-    <% @events.each do |event| %>
-      <div class="find-events-results-event" data-id="<%= event.id %>">
-        <div class="event-header">
-          <div class="event-name"><a href="/event/<%= event.id %>"><%= event.name %></a></div>
-          <div class="event-location"><%= event.location %></div>
-        </div>
-        <div class="event-body">
-          <div class="event-description"><%= event.description %></div>
-          <div class="event-date"><%= event.start_datetime.to_date unless event.start_datetime.nil? %></div>
-        </div>
-      </div>
-    <% end %>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @events.each do |event| %>
+          <tr>
+            <td><%= event.name %></td>
+            <td><%= event.description %></td>
+            <td><%= event.location %></td>
+            <td><%= event.start_datetime.to_date unless event.start_datetime.nil? %></td>
+            <td><a href="/event/<%= event.id %>"><i class="material-icons">open_in_browser</i></a></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
