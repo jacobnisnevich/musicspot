@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
   end
 
   def submit
-    @group = Group.new(params.require(:group).permit(:name, :location, :description, :group_type))
+    @group = Group.new(group_params)
     @group.users << current_user
     @group.admin_users << current_user
 
@@ -45,4 +45,10 @@ class GroupsController < ApplicationController
     @group_members = @group.users
     @group_admins = @group.admin_users
   end
+
+  private
+
+    def group_params
+      params.require(:group).permit(:name, :location, :description, :group_type)
+    end
 end

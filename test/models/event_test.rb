@@ -20,13 +20,21 @@ class EventTest < ActiveSupport::TestCase
     assert_not @event.valid?
   end
 
+  test "event location should be present" do
+    @event.location = ""
+    assert_not @event.valid?
+  end
+
   test "event name should not be too long" do
     @event.name = "a" * 51
     assert_not @event.valid?
   end
 
-  test "event location should not be too long" do
-    @event.location = "1" * 51
-    assert_not @event.valid?
+  test "zip validation should reject invalid zip codes" do
+    invalid_zips = %w[1 123456789 Seattle]
+    invalid_zips.each do |invalid_zip|
+      @event.location = invalid_zip
+      assert_not @event.valid?, "#{invalid_zip.inspect} should be invalid"
+    end
   end
 end

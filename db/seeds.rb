@@ -15,14 +15,14 @@ Event.create!([{
 },
 {
   name: "Acapella Concert",
-  location: "Santa Monica, California",
+  location: "91301",
   start_datetime: DateTime.new(2016,10,31,16),
   end_datetime: DateTime.new(2016,10,31,17),
   description: "An awesome concert."
 },
 {
   name: "Gig at Ackerman",
-  location: "Ackerman Student Union",
+  location: "90024",
   start_datetime: DateTime.new(2016,11,1,15),
   end_datetime: DateTime.new(2016,11,1,16),
   description: "An awesome gig."
