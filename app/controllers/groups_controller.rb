@@ -48,8 +48,11 @@ class GroupsController < ApplicationController
 
   def apply
     application = Application.new
-    application.user << current_user
-    application.group_id << params.find[:id]
+    application.group_id = params[:id]
+    application.user = current_user
+    if !application
+      puts "poop"
+    end
     application.save
   end
 
