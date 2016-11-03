@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :announcements
   root 'static_pages#home'
 
   get '/groups', to: 'groups#home'
