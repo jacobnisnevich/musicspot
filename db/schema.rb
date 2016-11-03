@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20161103181603) do
     t.string   "location"
     t.string   "description"
     t.string   "group_type"
+    t.text     "about"
   end
 
   create_table "memberships", force: :cascade do |t|

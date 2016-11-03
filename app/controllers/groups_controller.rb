@@ -57,10 +57,18 @@ class GroupsController < ApplicationController
     end
   end
 
+  def about
+    @full_width = true
+    @group = Group.find_by(id: params[:id])
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+    render 'about'
+  end
+
   private
 
     def group_params
-      params.require(:group).permit(:name, :location, :description, :group_type)
+      params.require(:group).permit(:name, :location, :description, :group_type, :about)
     end
 
 end

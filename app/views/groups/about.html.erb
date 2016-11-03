@@ -30,12 +30,12 @@
 <div id="group-nav">
   <div class="container">
     <div id="group-nav-bar">
-      <div id="group-nav-newsfeed" class="selected">
+      <div id="group-nav-newsfeed">
         <%= link_to "Newsfeed", :group_page, id: "show-button" %>
       </div>
       <div id="group-nav-events">Events</div>
       <div id="group-nav-members">Members</div>
-      <div id="group-nav-about">
+      <div id="group-nav-about" class="selected">
         <%= link_to "About", :group_about, id: "about-button" %>
       </div>
       <% if current_user && @group_admins.include?(current_user) %>
@@ -49,21 +49,8 @@
 
 <div id="group-body">
   <div class="container">
-    <div class="button">
-      <% if !@applied_to_group %>
-        <%= link_to "Apply to this group!", "/group/#{@group.id}/apply", id: "apply-to-group-button", method: :post, remote: true %>
-      <% end %>
-    </div>
-    <div id="group-members">
-      <h1>Admins</h1>
-      <% @group_admins.each do |admin| %>
-      <div><%= admin.name %></div>
-      <% end %>
-
-      <h1>Members</h1>
-      <% @group_members.each do |member| %>
-      <div><%= member.name %></div>
-      <% end %>
+    <div>
+    <%= @group.about %>
     </div>
   </div>
 </div>
