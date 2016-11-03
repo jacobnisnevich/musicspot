@@ -46,9 +46,17 @@ class GroupsController < ApplicationController
     @group_admins = @group.admin_users
   end
 
+  def apply
+    application = Application.new
+    application.user << current_user
+    application.group_id << params.find[:id]
+    application.save
+  end
+
   private
 
     def group_params
       params.require(:group).permit(:name, :location, :description, :group_type)
     end
+
 end

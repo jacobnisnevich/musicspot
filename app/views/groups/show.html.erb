@@ -45,6 +45,9 @@
 
 <div id="group-body">
   <div class="container">
+    <div class="button">
+      <%= link_to "Apply to this group!", "/group/:id/apply", id: "apply-to-group-button", method: :post, remote: true%>
+    </div>
     <div id="group-members">
       <h1>Admins</h1>
       <% @group_admins.each do |admin| %>
