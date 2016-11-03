@@ -20,7 +20,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @full_width = true
     @event = Event.find_by(id: params[:id])
   end
 
