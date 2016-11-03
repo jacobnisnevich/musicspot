@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
-  resources :announcements
   root 'static_pages#home'
 
   get '/groups', to: 'groups#home'
   get '/groups/new', to: 'groups#new'
   post '/groups/new/submit', to: 'groups#submit'
-  get '/group/:id', to: 'groups#show', as: 'group_page'
   get '/group/:id/newEvent', to: 'events#new'
+  get '/group/:id', to: 'announcements#index', as: 'group_page'
+  post '/group/:id', to:'announcements#create'
+  get '/group/:id/apply', to: 'announcements#new', as: 'new_announcement'
+  get '/group/:group_id/announcement/edit', to:'announcements#edit', as:'edit_announcement'
 
   get '/events', to: 'events#home'
   post '/events/new/submit', to: 'events#submit'
