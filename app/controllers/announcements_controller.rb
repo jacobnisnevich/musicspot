@@ -9,7 +9,6 @@ class AnnouncementsController < ApplicationController
     @group_members = @group.users
     @group_admins = @group.admin_users
     @applied_to_group = Application.find_by(user: current_user, group_id: params[:id]) != nil
-    puts @applied_to_group
   end
 
   # GET /groups/:id/announcement
@@ -28,7 +27,7 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       if @announcement.save
-        format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
+        format.html { redirect_to :group_page, notice: 'Announcement was successfully created.' }
       else
         format.html { render :new }
       end
@@ -40,7 +39,7 @@ class AnnouncementsController < ApplicationController
   def update
     respond_to do |format|
       if @announcement.update(announcement_params)
-        format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
+        format.html { redirect_to :group_page, notice: 'Announcement was successfully updated.' }
       else
         format.html { render :edit }
       end
