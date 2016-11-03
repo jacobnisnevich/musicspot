@@ -50,6 +50,12 @@
         <%= link_to "Apply to this group!", "/group/#{@group.id}/apply", id: "apply-to-group-button", method: :post, remote: true %>
       <% end %>
     </div>
+    <% if current_user && @group_admins.include?(current_user) %>
+        <div class="button">
+          <%= link_to "Create Announcement", :new_announcement, id: "new-announcement-button" %>
+        </div>
+    <% end %>
+
     <div id="group-members">
       <h1>Admins</h1>
       <% @group_admins.each do |admin| %>
@@ -61,5 +67,26 @@
       <div><%= member.name %></div>
       <% end %>
     </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @group_announcements.each do |announcement| %>
+          <tr>
+            <td><%= announcement.title %></td>
+            <td><%= announcement.description %></td>
+            <td><%= link_to 'Edit', edit_announcement_path(announcement) %></td>
+            <td><%= link_to 'Destroy', group_page_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
