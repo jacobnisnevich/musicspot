@@ -1,18 +1,18 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
 
-  # GET /announcements
-  # GET /announcements.json
+  # GET /groups/:id
   def index
-    @announcements = Announcement.all
+    @full_width = true
+    @group = Group.find_by(id: params[:id])
+    @group_announcements = @group.announcements
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+    @applied_to_group = Application.find_by(user: current_user, group_id: params[:id]) != nil
+    puts @applied_to_group
   end
 
-  # GET /announcements/1
-  # GET /announcements/1.json
-  def show
-  end
-
-  # GET /announcements/new
+  # GET /groups/:id/announcement
   def new
     @announcement = Announcement.new
   end
@@ -21,18 +21,16 @@ class AnnouncementsController < ApplicationController
   def edit
   end
 
-  # POST /announcements
-  # POST /announcements.json
+  # POST /groups/:id
   def create
     @announcement = Announcement.new(announcement_params)
+    @announcement.group_id = params[:id]
 
     respond_to do |format|
       if @announcement.save
         format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
-        format.json { render :show, status: :created, location: @announcement }
       else
         format.html { render :new }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +41,8 @@ class AnnouncementsController < ApplicationController
     respond_to do |format|
       if @announcement.update(announcement_params)
         format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
-        format.json { render :show, status: :ok, location: @announcement }
       else
         format.html { render :edit }
-        format.json { render json: @announcement.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +53,6 @@ class AnnouncementsController < ApplicationController
     @announcement.destroy
     respond_to do |format|
       format.html { redirect_to announcements_url, notice: 'Announcement was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
