@@ -45,6 +45,13 @@
           <th>Description</th>
           <th>Type</th>
           <th>Location</th>
+          <% if defined?(@destinations) %>
+            <% if @strategy == "distance" %>
+              <th>Distance</th>
+            <% elsif @strategy == "time" %>
+              <th>Duration</th>
+            <% end %>
+          <% end %>
           <th></th>
         </tr>
       </thead>
