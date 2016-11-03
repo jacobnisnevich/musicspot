@@ -24,13 +24,21 @@ class GroupTest < ActiveSupport::TestCase
     assert_not @group.valid?
   end
 
+  test "group type should be present" do
+    @group.group_type = ""
+    assert_not @group.valid?
+  end
+
   test "group name should not be too long" do
     @group.name = "a" * 51
     assert_not @group.valid?
   end
 
-  test "group location should not be too long" do
-    @group.location = "1" * 51
-    assert_not @group.valid?
+  test "zip validation should reject invalid zip codes" do
+    invalid_zips = %w[1 123456789 Seattle]
+    invalid_zips.each do |invalid_zip|
+      @group.location = invalid_zip
+      assert_not @group.valid?, "#{invalid_zip.inspect} should be invalid"
+    end
   end
 end
