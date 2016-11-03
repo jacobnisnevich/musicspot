@@ -54,6 +54,7 @@ class GroupsController < ApplicationController
   end
 
   def about
+    @full_width = true
     @group = Group.find_by(id: params[:id])
     @group_members = @group.users
     @group_admins = @group.admin_users
