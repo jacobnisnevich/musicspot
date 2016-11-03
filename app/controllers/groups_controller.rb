@@ -44,16 +44,17 @@ class GroupsController < ApplicationController
     @group = Group.find_by(id: params[:id])
     @group_members = @group.users
     @group_admins = @group.admin_users
+    @applied_to_group = Application.find_by(user: current_user, group_id: params[:id]) != nil
+    puts @applied_to_group
   end
 
   def apply
     application = Application.new
     application.group_id = params[:id]
     application.user = current_user
-    if !application
-      puts "poop"
+    if (application.save)
+      redirect_to group_page_path
     end
-    application.save
   end
 
   private
