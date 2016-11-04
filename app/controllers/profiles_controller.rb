@@ -13,7 +13,6 @@ class ProfilesController < ApplicationController
   end
 
   def submit
-    puts params[:id]
     @user = User.find_by(uid: params[:id])
     input = params[:profile]
     @profile = Profile.find_by(user_id: @user.id)
