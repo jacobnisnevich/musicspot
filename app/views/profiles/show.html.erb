@@ -1,13 +1,32 @@
-<h1><%= image_tag "https://graph.facebook.com/#{@user.uid}/picture?type=square" %><%= @user.name %></h1>
+<h1>
+  <div id="profile-header">
+    <%= image_tag "https://graph.facebook.com/#{@user.uid}/picture?type=square" %>
+    <%= @user.name %>
+  </div>
+</h1>
 
-<% @profile.attributes.each_pair do |name, value| %>
-	<% if name != "id" %>
-		<% puts value %>
-		<div><%= name %></div>
-		<div><%= value %></div>
-	<% end %>
+<% if current_user && @user == current_user %>
+  <div id="profile-edit-button">
+    <div class="button">
+      <%= link_to edit_profile_path, id: "show-button" do %>
+        <div>Edit Profile &nbsp;</div>
+        <div><i class="material-icons">create</i></div>
+      <% end %>
+    </div>
+  </div>
 <% end %>
 
-<div id="group-nav-newsfeed" class="selected">
-	<%= link_to "Edit Profile", edit_profile_path, id: "show-button" %>
+<div id="profile-about">
+  <div id="profile-about-title">About</div>
+  <div id="profile-about-body"> 
+    <% @profile.attributes.each_pair do |name, value| %>
+      <% if name != "id" %>
+        <div class="pair">
+          <div class="key"><%= name.titleize %></div>
+          <div class="value"><%= value %></div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 </div>
+

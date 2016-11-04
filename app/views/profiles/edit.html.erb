@@ -1,20 +1,23 @@
-<h1><%= image_tag "https://graph.facebook.com/#{@user.uid}/picture?type=square" %><%= @user.name %></h1>
-
-
+<h1>
+  <div id="profile-header">
+    <%= image_tag "https://graph.facebook.com/#{@user.uid}/picture?type=square" %>
+    <%= @user.name %>
+  </div>
+</h1>
 
 <%= form_for @profile, :url => { :controller => :profiles, :action => :submit } do |f| %>
-    <div id="edit-profile-form">
-        <% @profile.attributes.each_pair do |name, value| %>
-            <% if name != "id" %>
-                <div>
-                <%= f.label name %>
-                <%= f.text_field name, class: 'form-control' , :value => value %>
-                </div>
-            <% end %>
-        <% end %>
-
+  <div id="edit-profile-form">
+    <% @profile.attributes.each_pair do |name, value| %>
+      <% if name != "id" %>
         <div>
-          <%= f.submit "Save profile", class: "button" %>
+          <%= f.label name %>
+          <%= f.text_field name, class: 'form-control' , :value => value %>
         </div>
+      <% end %>
+    <% end %>
+
+    <div>
+      <%= f.submit "Save profile", class: "button" %>
     </div>
+  </div>
 <% end %>

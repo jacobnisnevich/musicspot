@@ -5,9 +5,7 @@ class ProfilesController < ApplicationController
       Profile.create(:user_id => @user.id)
     end
     @profile = Profile.select(profile_params).where(:user_id => @user.id).first
-
   end
-
 
   def edit
     @user = User.find_by(uid: params[:id])
@@ -33,8 +31,8 @@ class ProfilesController < ApplicationController
 
   private
 
-    def profile_params
-      #if we add a column to a profile, just adding it here should work
-      @params = :email, :musical_role, :interests, :other
-    end
+  def profile_params
+    # if we add a column to a profile, just adding it here should work
+    @params = :email, :musical_role, :interests, :other
+  end
 end
