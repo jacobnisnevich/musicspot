@@ -1,15 +1,5 @@
 class AnnouncementsController < ApplicationController
-  before_action :set_announcement, only: [:show, :edit, :update, :destroy]
-
-  # GET /groups/:id
-  def index
-    @full_width = true
-    @group = Group.find_by(id: params[:id])
-    @group_announcements = @group.announcements
-    @group_members = @group.users
-    @group_admins = @group.admin_users
-    @applied_to_group = Application.find_by(user: current_user, group_id: params[:id]) != nil
-  end
+  before_action :set_announcement, only: [:edit, :update, :destroy]
 
   # GET /groups/:id/announcement
   def new
@@ -25,34 +15,26 @@ class AnnouncementsController < ApplicationController
     @announcement = Announcement.new(announcement_params)
     @announcement.group_id = params[:id]
 
-    respond_to do |format|
-      if @announcement.save
-        format.html { redirect_to :group_page, notice: 'Announcement was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @announcement.save
+      redirect_to :group_page, notice: 'Announcement was successfully created.'
+    else
+      render :new
     end
   end
 
-  # PATCH/PUT /announcements/1
-  # PATCH/PUT /announcements/1.json
+  # PATCH/PUT /announcements/:id
   def update
-    respond_to do |format|
-      if @announcement.update(announcement_params)
-        format.html { redirect_to :group_page, notice: 'Announcement was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @announcement.update(announcement_params)
+      redirect_to :group_page, notice: 'Announcement was successfully updated.'
+    else
+      render :edit
     end
   end
 
-  # DELETE /announcements/1
-  # DELETE /announcements/1.json
+  # DELETE /groups/:id/announcements/
   def destroy
     @announcement.destroy
-    respond_to do |format|
-      format.html { redirect_to announcements_url, notice: 'Announcement was successfully destroyed.' }
-    end
+    redirect_to group_page_path(params[:group_id]), notice: 'Announcement was successfully destroyed.'
   end
 
   private
