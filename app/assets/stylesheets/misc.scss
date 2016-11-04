@@ -34,13 +34,31 @@
 }
 
 input[type="submit"] {
-  border: 0;
   font-family: 'Quicksand', sans-serif;
   text-decoration: none;
   font-size: 18px;
   color: #fff;
   padding: 10px;
   display: block;
+  margin: 0 auto;
+
+  background-color: #80CBC4;
+  display: inline-block;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 0;
+
+  box-shadow: 2px 2px 10px #CCC;
+
+  -webkit-transition: all 0.05s linear;
+  transition: all 0.05s linear;
+
+  &:hover {
+    box-shadow: 4px 4px 10px #CCC;
+
+    -webkit-transition: all 0.05s linear;
+    transition: all 0.05s linear;
+  }
 }
 
 input.button {
@@ -59,8 +77,12 @@ input.button {
 
 a i {
   color: #333;
-
+  
   &:hover {
     text-shadow: 2px 2px 5px #CCC;
   }
+}
+
+a {
+  text-decoration: none;
 }
