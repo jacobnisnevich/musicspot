@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get '/group/:id', to: 'groups#show', as: 'group_page'
   post '/group/:id', to:'announcements#create'
   get '/group/:id/announcement', to: 'announcements#new', as: 'new_announcement'
-  get '/group/:id/announcement/edit', to:'announcements#edit', as:'edit_announcement'
+  get '/group/:id/announcement/edit/:announcement_id', to:'announcements#edit', as:'edit_announcement'
   delete '/group/:group_id/announcement/:id', to:'announcements#destroy', as:'delete_announcement'
+  patch '/groups/:id/announcement/:announcement_id', to:'announcements#update', as:'update_announcement'
   get '/group/:id/about', to: 'groups#about', as: 'group_about'
 
   get '/events', to: 'events#home'
