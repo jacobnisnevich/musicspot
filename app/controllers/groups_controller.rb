@@ -32,6 +32,13 @@ class GroupsController < ApplicationController
     @applied_to_group = Application.find_by(user: current_user, group_id: params[:id]) != nil
   end
 
+  def members
+    @full_width = true
+    @group = Group.find_by(id: params[:id])
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+  end
+
   def new
     @group = Group.new
   end

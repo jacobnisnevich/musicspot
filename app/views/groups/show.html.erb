@@ -34,7 +34,9 @@
         <%= link_to "Newsfeed", :group_page, id: "show-button" %>
       </div>
       <div id="group-nav-events">Events</div>
-      <div id="group-nav-members">Members</div>
+      <div id="group-nav-members">
+      <%= link_to "Members", :group_members, id: "members-button" %>
+      </div>
       <div id="group-nav-about">
         <%= link_to "About", :group_about, id: "about-button" %>
       </div>
@@ -49,28 +51,11 @@
 
 <div id="group-body">
   <div class="container">
-    <div class="button">
-      <% if !@applied_to_group %>
-        <%= link_to "Apply to this group!", "/group/#{@group.id}/apply", id: "apply-to-group-button", method: :post, remote: true %>
-      <% end %>
-    </div>
     <% if current_user && @group_admins.include?(current_user) %>
         <div class="button">
           <%= link_to "Create Announcement", :new_announcement, id: "new-announcement-button" %>
         </div>
     <% end %>
-
-    <div id="group-members">
-      <h1>Admins</h1>
-      <% @group_admins.each do |admin| %>
-      <div><%= admin.name %></div>
-      <% end %>
-
-      <h1>Members</h1>
-      <% @group_members.each do |member| %>
-      <div><%= member.name %></div>
-      <% end %>
-    </div>
 
     <table>
       <thead>

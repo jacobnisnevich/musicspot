@@ -34,7 +34,9 @@
         <%= link_to "Newsfeed", :group_page, id: "show-button" %>
       </div>
       <div id="group-nav-events">Events</div>
-      <div id="group-nav-members">Members</div>
+      <div id="group-nav-members">
+        <%= link_to "Members", :group_members, id: "members-button" %>
+      </div>
       <div id="group-nav-about" class="selected">
         <%= link_to "About", :group_about, id: "about-button" %>
       </div>
