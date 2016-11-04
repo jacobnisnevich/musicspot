@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'event/:id', to: 'events#show', as: 'event_page'
 
   get '/profile/:id', to: 'profiles#show', as: 'profile'
+  get '/profile/:id/edit', to: 'profiles#edit', as: 'edit_profile'
+  patch '/profile/:id/submit', to: 'profiles#submit', as: 'submit_profile'
   get '/signup',  to: 'users#new'
   get '/tos', to: 'static_pages#tos'
   get '/privacy', to: 'static_pages#privacy'
