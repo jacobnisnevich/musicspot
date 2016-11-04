@@ -196,12 +196,23 @@
 /* Event Page */
 
 .event-subtitle {
-	margin: 30px;
-	color: #009688;
-	font-size: 26px;
+  margin: 30px 0;
+  color: #009688;
+  font-size: 24px;
 }
 
 .event-data {
-	margin: 30px;
-	font-size: 18px;
+  margin: 30px 0;
+  color: #000;
+  font-size: 18px;
+}
+
+.event-thumbnail {
+  height: 25px;
+  width: auto;
+}
+
+.event-image {
+  height: 250px;
+  width: auto;
 }

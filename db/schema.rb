@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20161103221034) do
     t.text     "description"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "image"
   end
 
   create_table "group_events", force: :cascade do |t|

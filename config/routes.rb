@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/group/:id/announcement', to: 'announcements#new', as: 'new_announcement'
   get '/group/:id/announcement/edit', to:'announcements#edit', as:'edit_announcement'
   delete '/group/:group_id/announcement/:id', to:'announcements#destroy', as:'delete_announcement'
+  get '/group/:id/about', to: 'groups#about', as: 'group_about'
 
   get '/events', to: 'events#home'
   post '/events/new/submit', to: 'events#submit'

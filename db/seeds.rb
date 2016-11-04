@@ -11,21 +11,24 @@ Event.create!([{
   location: "90024",
   start_datetime: DateTime.new(2016,10,30,15),
   end_datetime: DateTime.new(2016,10,30,16),
-  description: "An awesome concert."
+  description: "An amazing concert to be remembered.",
+  image: "http://i.imgur.com/LE1xd.jpg"
 },
 {
   name: "Acapella Concert",
   location: "91301",
   start_datetime: DateTime.new(2016,10,31,16),
   end_datetime: DateTime.new(2016,10,31,17),
-  description: "An awesome concert."
+  description: "Showcase of amazing singers.",
+  image: "http://i.imgur.com/TlpMKDc.png?2"
 },
 {
   name: "Gig at Ackerman",
   location: "90024",
   start_datetime: DateTime.new(2016,11,1,15),
   end_datetime: DateTime.new(2016,11,1,16),
-  description: "An awesome gig."
+  description: "An awesome gig we scored.",
+  image: "http://www.clipartbest.com/cliparts/4T9/bKg/4T9bKgLTE.png"
 }])
 
 puts "Created #{Event.count} events"

@@ -1,0 +1,44 @@
+<% provide(:title, @group.name) %>
+
+<div id="group-header">
+  <div id="group-header-container" class="container">
+    <div id="group-header-photo">
+      <%= image_tag "group.png" %>
+    </div>
+    <div id="group-header-info">
+      <div id="group-header-name">
+        <%= @group.name %>
+      </div>
+      <div id="group-header-location">
+        <%= @group.location %>
+      </div>
+      <div id="group-header-description">
+        <%= @group.description %>
+      </div>
+    </div>
+    <div id="group-header-members">
+      <span><%= @group.users.length %></span>
+      <% if @group.users.length > 1 %>
+        <span>Members</span>
+      <% else %>
+        <span>Member</span>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div id="group-nav">
+  <div class="container">
+    <div id="group-nav-bar">
+      <div id="group-nav-newsfeed">Newsfeed</div>
+      <div id="group-nav-events">Events</div>
+      <div id="group-nav-members">Members</div>
+      <div id="group-nav-about">About</div>
+      <% if current_user && @group_admins.include?(current_user) %>
+        <div id="group-nav-create-event">
+          <%= link_to "New Event", "/group/#{@group.id}/newEvent", id: "new-event-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
