@@ -1,5 +1,14 @@
 <h1>Editing Announcement</h1>
 
+<div class="back-button">
+  <div class="button">
+    <%= link_to :group_page do %>
+      <div><i class="material-icons">arrow_back</i></div>
+      <div>&nbsp; Back</div>
+    <% end %>
+  </div>
+</div>
+
 <%= form_for @announcement, :url => { :controller => :announcements, :action => :update} do |f| %>
   <% if @announcement.errors.any? %>
     <div id="error_explanation">
@@ -12,25 +21,17 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div id="edit-announcement-form">
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Edit Announcement", class: "button" %>
+    </div>
   </div>
 <% end %>
-
-
-<%= link_to 'Back', :group_page %>
-
-
-
-<%= link_to 'Back', group_page_path %>
