@@ -1,2 +1,13 @@
 <h1><%= image_tag "https://graph.facebook.com/#{@user.uid}/picture?type=square" %><%= @user.name %></h1>
 
+<% @profile.attributes.each_pair do |name, value| %>
+	<% if name != "id" %>
+		<% puts value %>
+		<div><%= name %></div>
+		<div><%= value %></div>
+	<% end %>
+<% end %>
+
+<div id="group-nav-newsfeed" class="selected">
+	<%= link_to "Edit Profile", edit_profile_path, id: "show-button" %>
+</div>
