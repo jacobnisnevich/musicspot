@@ -20,13 +20,12 @@ class EventsController < ApplicationController
   end
 
   def show
-    @full_width = true
     @event = Event.find_by(id: params[:id])
   end
 
   private
 
     def event_params
-      params.require(:event).permit(:end_datetime, :name, :location, :description, :start_datetime)
+      params.require(:event).permit(:end_datetime, :name, :location, :description, :start_datetime, :image)
     end
 end
