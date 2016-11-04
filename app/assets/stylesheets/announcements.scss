@@ -1,3 +1,57 @@
 // Place all the styles related to the Announcements controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.back-button {
+  margin-bottom: 20px;
+
+  .button {
+    background-color: #AAA;
+    border-radius: 3px;
+
+    a {
+      display: flex;
+      color: #FFF;
+      align-items: center;
+      padding: 10px; 
+      font-size: 18px;
+
+      i {
+        color: #FFF;
+
+        &:hover {
+          text-shadow: none;
+        }
+      }
+    }
+  }
+}
+
+#new-announcement-form {
+  width: 100%;
+  background-color: #4DB6AC;
+  border-radius: 2px;
+  box-shadow: #AAA 2px 2px 10px;
+  padding: 20px 20%;
+  box-sizing: border-box;
+
+  div {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  label {
+    flex: 1;
+    text-align: right;
+    color: #FFF;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+  }
+
+  input[type="text"], textarea {
+    flex: 3;
+    border: 1px solid #4DB6AC;
+  }
+}
