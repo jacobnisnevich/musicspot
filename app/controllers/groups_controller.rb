@@ -23,6 +23,22 @@ class GroupsController < ApplicationController
     end
   end
 
+  def show
+    @full_width = true
+    @group = Group.find_by(id: params[:id])
+    @group_announcements = @group.announcements
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+    @applied_to_group = Application.find_by(user: current_user, group_id: params[:id]) != nil
+  end
+
+  def members
+    @full_width = true
+    @group = Group.find_by(id: params[:id])
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+  end
+
   def new
     @group = Group.new
   end
@@ -39,18 +55,13 @@ class GroupsController < ApplicationController
     end
   end
 
-  def show
-    @full_width = true
-    @group = Group.find_by(id: params[:id])
-    @group_members = @group.users
-    @group_admins = @group.admin_users
-  end
-
   def apply
     application = Application.new
-    application.user << current_user
-    application.group_id << params.find[:id]
-    application.save
+    application.group_id = params[:id]
+    application.user = current_user
+    if (application.save)
+      redirect_to group_page_path
+    end
   end
 
   def about
@@ -63,8 +74,7 @@ class GroupsController < ApplicationController
 
   private
 
-    def group_params
-      params.require(:group).permit(:name, :location, :description, :group_type, :about)
-    end
-
+  def group_params
+    params.require(:group).permit(:name, :location, :description, :group_type, :about)
+  end
 end

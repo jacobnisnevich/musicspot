@@ -1,0 +1,17 @@
+<% provide(:title, @group.name) %>
+
+<%= render partial: 'header', locals: {selected: 'members'} %>
+
+<div class="container">
+  <div id="group-members">
+    <h1>Admins</h1>
+    <% @group_admins.each do |admin| %>
+    <div><%= admin.name %></div>
+    <% end %>
+
+    <h1>Members</h1>
+    <% @group_members.each do |member| %>
+    <div><%= member.name %></div>
+    <% end %>
+  </div>
+</div>

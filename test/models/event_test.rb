@@ -8,7 +8,8 @@ class EventTest < ActiveSupport::TestCase
       location: "90024",
       start_datetime: DateTime.new(2016,10,30,15),
       end_datetime: DateTime.new(2016,10,30,16),
-      description: "An awesome concert.")
+      description: "An awesome concert.",
+      image: "http://i.imgur.com/LE1xd.jpg")
   end
 
   test "valid event" do
@@ -35,6 +36,14 @@ class EventTest < ActiveSupport::TestCase
     invalid_zips.each do |invalid_zip|
       @event.location = invalid_zip
       assert_not @event.valid?, "#{invalid_zip.inspect} should be invalid"
+    end
+  end
+
+  test "image validation should reject invalid urls" do
+    invalid_urls = %w[hello htttp://i.imgur.com/LE1xd.jpg chrome://settings]
+    invalid_urls.each do |invalid_url|
+      @event.image = invalid_url
+      assert_not @event.valid?, "#{invalid_url.inspect} should be invalid"
     end
   end
 end
