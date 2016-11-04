@@ -4,8 +4,12 @@ class EventsController < ApplicationController
   end
 
   def new
+    @full_width = true
     @event = Event.new
     @group_id = params[:id]
+
+    @group = Group.find(@group_id)
+    @group_admins = @group.admin_users
   end
 
   def submit

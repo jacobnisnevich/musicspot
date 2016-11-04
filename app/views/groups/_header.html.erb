@@ -56,8 +56,12 @@
       </div>
 
       <% if current_user && @group_admins.include?(current_user) %>
-        <div id="group-nav-create-event">
-          <%= link_to "New Event", "/group/#{@group.id}/newEvent", id: "new-event-button" %>
+        <% if selected == 'new_event' %>
+          <div id="group-nav-create-event" class="selected">
+        <% else %>
+          <div id="group-nav-create-event">
+        <% end %>
+          <%= link_to "New Event", "/group/#{@group.id}/new_event", id: "new-event-button" %>
         </div>
       <% end %>
     </div>
