@@ -1,0 +1,40 @@
+<h1>Your Newsfeed</h1>
+
+<div id="home-newsfeed">
+  <% @news.each do |news_post| %>
+    <div class="home-newsfeed-item">
+      <% if news_post[:type] == 'event' %>
+
+        <div class="home-newsfeed-item-top">
+          <div>
+            <span class="home-newsfeed-item-title"><%= news_post[:post].name %>
+            </span>
+            <span>
+              <i>hosted by <b><%= news_post[:post].groups.first.name %></b></i>
+            </span>
+          </div>
+          <div class="home-newsfeed-item-date">
+            <i><%= time_ago_in_words(news_post[:post].created_at) %> ago</i>
+          </div>
+        </div>
+        <div class="group-newsfeed-item-body"><%= news_post[:post].description %></div>
+
+      <% elsif news_post[:type] == 'announcement' %>
+
+       <div class="home-newsfeed-item-top">
+          <div>
+            <span class="home-newsfeed-item-title"><%= news_post[:post].title %></span>
+            <span>
+              <i>in <b><%= news_post[:post].group.name %></b></i>
+            </span>
+          </div>
+          <div class="home-newsfeed-item-date">
+            <i><%= time_ago_in_words(news_post[:post].created_at) %> ago</i>
+          </div>
+        </div>
+        <div class="group-newsfeed-item-body"><%= news_post[:post].description %></div>
+
+      <% end %>
+    </div>
+  <% end %>
+</div>

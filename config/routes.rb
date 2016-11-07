@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
+  root 'home#home'
 
   get '/groups', to: 'groups#home'
   get '/groups/new', to: 'groups#new'
