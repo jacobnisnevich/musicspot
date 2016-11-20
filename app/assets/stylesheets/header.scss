@@ -76,6 +76,10 @@ header {
   display: none;
   color: white;
 
+  #mobile-nav-menu {
+    cursor: pointer;
+  }
+
   #mobile-navbar {
     display: none;
     position: fixed;
@@ -92,6 +96,14 @@ header {
       padding: 20px;
       background-color: #DDD;
       border-bottom: 1px solid #AAA;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #CCC;
+
+        transition: 0.3s ease all;
+        -webkit-transition: 0.3s ease all;
+      }
 
       a {
         color: #333;

@@ -10,4 +10,8 @@ $(document).ready(function() {
       showDropdown = false;
     }
   });
+
+  $('nav li').click(function() {
+    window.location.href = $(this).find('a')[0].href;
+  });
 });
