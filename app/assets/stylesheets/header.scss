@@ -126,4 +126,12 @@ header {
   .container {
     margin: 0 5% !important;
   }
+
+  #find-groups-searches {
+    flex-wrap: wrap;
+  }
+
+  #find-events-searches {
+    flex-wrap: wrap;
+  }
 }
