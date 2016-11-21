@@ -5,7 +5,7 @@ header {
   height: 64px;
   background-color: $teal;
   box-shadow: #777 0px 2px 5px;
-  z-index: 5;
+  z-index: 6;
   position: relative;
 
   .container {
@@ -91,6 +91,7 @@ header {
   margin: 0;
   padding: 0;
   box-shadow: #888 0px 2px 5px;
+  z-index: 5;
 
   li {
     width: 100%;
