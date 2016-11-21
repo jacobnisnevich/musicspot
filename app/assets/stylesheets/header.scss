@@ -79,40 +79,41 @@ header {
   #mobile-nav-menu {
     cursor: pointer;
   }
+}
 
-  #mobile-navbar {
-    display: none;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 64px;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    box-shadow: #888 0px 2px 5px;
+#mobile-navbar {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 64px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  box-shadow: #888 0px 2px 5px;
 
-    li {
-      width: 100%;
-      padding: 20px;
-      background-color: #DDD;
-      border-bottom: 1px solid #AAA;
-      cursor: pointer;
+  li {
+    width: 100%;
+    padding: 20px;
+    background-color: #DDD;
+    border-bottom: 1px solid #AAA;
+    cursor: pointer;
 
-      &:hover {
-        background-color: #CCC;
+    &:hover {
+      background-color: #CCC;
 
-        transition: 0.3s ease all;
-        -webkit-transition: 0.3s ease all;
-      }
+      transition: 0.3s ease all;
+      -webkit-transition: 0.3s ease all;
+    }
 
-      a {
-        color: #333;
-        font-family: 'Quicksand', sans-serif;
-        font-size: 18px;
-      }
+    a {
+      color: #333;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 18px;
     }
   }
 }
+
 
 @media screen and (max-width: 980px) {
   #mobile-nav {
