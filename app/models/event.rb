@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   has_many :group_events
+  has_many :event_users
   has_many :groups, :through => :group_events
+  has_many :users, :through => :event_users
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_ZIP_REGEX = /\A\d{5}(-\d{4})?\z|\A\d{3}\z/
