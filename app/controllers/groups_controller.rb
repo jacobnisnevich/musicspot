@@ -29,7 +29,7 @@ class GroupsController < ApplicationController
     @group_announcements = @group.announcements
     @group_members = @group.users
     @group_admins = @group.admin_users
-    @applied_to_group = Application.find_by(user: current_user, group_id: params[:id]) != nil
+    @applied_to_group = (Application.find_by(user: current_user, group_id: params[:id]) != nil) || (@group_members.include?(current_user)) || (@group_admins.include?(current_user))
   end
 
   def members
@@ -37,6 +37,8 @@ class GroupsController < ApplicationController
     @group = Group.find_by(id: params[:id])
     @group_members = @group.users
     @group_admins = @group.admin_users
+
+    @applied_users = @group.user_apps
   end
 
   def new
@@ -59,7 +61,7 @@ class GroupsController < ApplicationController
     application = Application.new
     application.group_id = params[:id]
     application.user = current_user
-    if (application.save)
+    if application.save
       redirect_to group_page_path
     end
   end
@@ -70,6 +72,27 @@ class GroupsController < ApplicationController
     @group_members = @group.users
     @group_admins = @group.admin_users
     render 'about'
+  end
+
+  def reject
+      application = Application.find_by(user_id: params[:user_id], group_id: params[:id])
+      if application.destroy
+        redirect_to group_members_path
+      end
+  end
+
+  def accept
+    # add the user to the group
+    group = Group.find_by(id: params[:id])
+    group.users << User.find_by(id: params[:user_id])
+    
+    # delete the application to the group
+    application = Application.find_by(user_id: params[:user_id], group_id: params[:id])
+    application.destroy
+
+    if group.save
+      redirect_to group_members_path
+    end
   end
 
   private

@@ -6,7 +6,7 @@
       <% if !@applied_to_group %>
         <div id="group-newsfeed-apply-button">
           <div class="button">
-            <%= link_to "/group/#{@group.id}/apply", id: "apply-to-group-button" do %>
+            <%= link_to "/group/#{@group.id}/apply", id: "apply-to-group-button",  method: :post, remote: true do %>
               <div>Apply to Group &nbsp;</div>
               <div><i class="material-icons">assignment_ind</i></div>
             <% end %>

@@ -7,7 +7,7 @@ class Group < ApplicationRecord
   has_many :users, :through => :memberships
   has_many :admin_users, :through => :admins, :source => :user
   has_many :events, :through => :group_events
-  has_many :user_apps, :through => :applications
+  has_many :user_apps, :through => :applications, :source => :user
 
   validates :name, presence: true, length: { maximum: 50 }
   VALID_ZIP_REGEX = /\A\d{5}(-\d{4})?\z|\A\d{3}\z/
