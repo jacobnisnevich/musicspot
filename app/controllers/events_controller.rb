@@ -1,6 +1,26 @@
+require 'GoogleMapsAPI'
+require 'search/DistanceSort'
+require 'search/TimeSort'
+
 class EventsController < ApplicationController
   def home
-    @events = Event.all.to_a
+    if params[:name].blank?
+      @events = Event.all.to_a
+    else
+      @events = Event.where("lower(name) LIKE ?", "%#{params[:name].downcase}%").to_a
+    end
+
+    if !(params[:zip].blank?)
+      destinations_zips = @events.map { |e| e.location }
+      @destinations = GoogleMapsAPI.get_distances(params[:zip], destinations_zips)
+      @strategy = params[:search]
+      if params[:search] == "distance"
+        strategy = DistanceSort.new
+      else
+        strategy = TimeSort.new
+      end
+      @events = strategy.sort(@events, @destinations)
+    end
   end
 
   def new
