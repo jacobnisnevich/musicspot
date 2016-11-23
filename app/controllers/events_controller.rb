@@ -1,6 +1,7 @@
 require 'GoogleMapsAPI'
 require 'search/DistanceSort'
 require 'search/TimeSort'
+require 'will_paginate/array'
 
 class EventsController < ApplicationController
   def home
@@ -21,6 +22,8 @@ class EventsController < ApplicationController
       end
       @events = strategy.sort(@events, @destinations)
     end
+    @num_results = @events.size
+    @events = @events.paginate(page: params[:page], :per_page => 10)
   end
 
   def new

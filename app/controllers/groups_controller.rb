@@ -1,6 +1,7 @@
 require 'GoogleMapsAPI'
 require 'search/DistanceSort'
 require 'search/TimeSort'
+require 'will_paginate/array'
 
 class GroupsController < ApplicationController
   def home
@@ -21,6 +22,8 @@ class GroupsController < ApplicationController
       end
       @groups = strategy.sort(@groups, @destinations)
     end
+    @num_results = @groups.size
+    @groups = @groups.paginate(page: params[:page], :per_page => 10)
   end
 
   def show
