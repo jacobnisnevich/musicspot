@@ -6,29 +6,25 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Event.create!([{
-  name: "Band Concert",
-  location: "90024",
-  start_datetime: DateTime.new(2016,10,30,15),
-  end_datetime: DateTime.new(2016,10,30,16),
-  description: "An amazing concert to be remembered.",
-  image: "http://i.imgur.com/LE1xd.jpg"
-},
-{
-  name: "Acapella Concert",
-  location: "91301",
-  start_datetime: DateTime.new(2016,10,31,16),
-  end_datetime: DateTime.new(2016,10,31,17),
-  description: "Showcase of amazing singers.",
-  image: "http://i.imgur.com/TlpMKDc.png?2"
-},
-{
-  name: "Gig at Ackerman",
+Event.create!(
+  name: "Concert",
   location: "90024",
   start_datetime: DateTime.new(2016,11,1,15),
   end_datetime: DateTime.new(2016,11,1,16),
-  description: "An awesome gig we scored.",
+  description: "An awesome concert!",
   image: "http://www.clipartbest.com/cliparts/4T9/bKg/4T9bKgLTE.png"
-}])
+)
+
+99.times do |n|
+  name  = "#{Faker::Company.name} Concert"
+  location = Faker::Address.zip_code
+  description = Faker::Hipster.sentence
+  Event.create!(name:  name,
+    location: location,
+    start_datetime: DateTime.new(2016,11,1,15),
+    end_datetime: DateTime.new(2016,11,1,16),
+    description: description,
+    image: "http://www.clipartbest.com/cliparts/4T9/bKg/4T9bKgLTE.png")
+end
 
 puts "Created #{Event.count} events"
