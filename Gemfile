@@ -54,3 +54,4 @@ gem 'omniauth-facebook', '1.4.0'
 
 gem 'httparty'
 gem 'faker', '1.6.6'
+gem 'will_paginate', '3.1.0'
