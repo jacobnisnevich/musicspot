@@ -37,6 +37,7 @@
     <div id="find-groups-results-title">Results</div>
     <div id="find-groups-results-count"><%= @groups.size %> Found</div>
   </div>
+  <%= will_paginate %>
   <div id="find-groups-results">
     <table>
       <thead>
@@ -75,6 +76,7 @@
       </tbody>
     </table>
   </div>
+  <%= will_paginate %>
 </div>
 
 <script type="text/javascript">
