@@ -52,7 +52,7 @@ class EventsController < ApplicationController
       @event = Event.find_by(id: params[:event_id])
       @event.users << current_user unless @event.users.include?(current_user)
       if (@event.save)
-        redirect_to action: 'show', id: @event.id
+        redirect_back fallback_location: { action: 'show', id: @event.id }
       end
     end
   end
@@ -62,7 +62,7 @@ class EventsController < ApplicationController
       @event = Event.find_by(id: params[:event_id])
       @event.users.delete(current_user)
       if (@event.save)
-        redirect_to action: 'show', id: @event.id
+        redirect_back fallback_location: { action: 'show', id: @event.id }
       end
     end
   end
