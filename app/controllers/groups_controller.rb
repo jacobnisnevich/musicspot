@@ -22,6 +22,7 @@ class GroupsController < ApplicationController
       end
       @groups = strategy.sort(@groups, @destinations)
     end
+    @num_results = @groups.size
     @groups = @groups.paginate(page: params[:page], :per_page => 10)
   end
 

@@ -22,6 +22,7 @@ class EventsController < ApplicationController
       end
       @events = strategy.sort(@events, @destinations)
     end
+    @num_results = @events.size
     @events = @events.paginate(page: params[:page], :per_page => 10)
   end
 
