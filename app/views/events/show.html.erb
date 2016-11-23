@@ -18,4 +18,17 @@
   <% @event.groups.each do |group| %>
   	<div class="event-data"> <%= group.name %> </div>
   <% end %>
+  <div class="event-subtitle"> People Going </div>
+  <% @event.users.each do |user| %>
+    <div class="event-data"> <%= user.name %> </div>
+  <% end %>
+  <%=
+    if current_user
+      if @event.users.include?(current_user)
+        button_to 'Leave Event', '/event/remove_user', params: { event_id: @event.id }
+      else
+        button_to 'Join Event', '/event/add_user', params: { event_id: @event.id }
+      end
+    end
+  %>
 </div>
