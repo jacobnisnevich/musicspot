@@ -22,10 +22,14 @@
         <%= text_field_tag :zip, params[:zip], :id => 'search-zip-input', placeholder: "Enter Zip" %>
     </div>
     <div id="zip-search-strategy" style="display: none">
-      <%= radio_button_tag(:search, "distance") %>
-      <%= label_tag(:search_dist, "Search by distance") %>
-      <%= radio_button_tag(:search, "time") %>
-      <%= label_tag(:search_time, "Search by time") %>
+      <div>
+        <%= radio_button_tag(:search, "distance") %>
+        <%= label_tag(:search_dist, "Search by distance") %>
+      </div>
+      <div>
+        <%= radio_button_tag(:search, "time") %>
+        <%= label_tag(:search_time, "Search by time") %>
+      </div>
     </div>
     <%= submit_tag "Search", :id => 'search-groups-button', :class => 'button' %>
   <% end %>
