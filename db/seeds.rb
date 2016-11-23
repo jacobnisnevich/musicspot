@@ -44,5 +44,5 @@ event.groups << group
   event.groups << group
 end
 
-puts "Created #{Group.count} events"
-puts "Created #{Event.count} events"
+puts "#{Group.count} events total"
+puts "#{Event.count} events total"
