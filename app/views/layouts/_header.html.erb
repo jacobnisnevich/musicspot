@@ -3,7 +3,7 @@
     <div id="logo">
       <%= link_to "MusicSpot", root_path %>
     </div>
-    <nav>
+    <nav id="desktop-nav">
       <ul id="navbar">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Groups", groups_path %></li>
@@ -16,5 +16,20 @@
         <% end %>
       </ul>
     </nav>
+    <nav id="mobile-nav">
+      <div><i id="mobile-nav-menu" class="material-icons">menu</i></div>
+    </nav>
   </div>
 </header>
+
+<ul id="mobile-navbar">
+  <li><%= link_to "Home", root_path %></li>
+  <li><%= link_to "Groups", groups_path %></li>
+  <li><%= link_to "Events", events_path %></li>
+  <% if current_user %>
+    <li><%= link_to "Profile", profile_path(:id => current_user.uid), id: "profile" %></li>
+    <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+  <% else %>
+    <li><%= link_to "Log in", "/auth/facebook", id: "sign_in" %></li>
+  <% end %>
+</ul>
