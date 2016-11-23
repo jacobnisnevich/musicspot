@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get '/privacy', to: 'static_pages#privacy'
 
   post '/group/:id/apply', to: 'groups#apply', as: 'apply_to_group'
+  post '/group/:id/accept_application/:user_id', to: 'groups#accept', as: 'accept_application'
+  post '/group/:id/reject_application/:user_id', to: 'groups#reject', as: 'reject_application/'
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]

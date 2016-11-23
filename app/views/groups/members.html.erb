@@ -1,6 +1,28 @@
 <%= render partial: 'header', locals: {selected: 'members'} %>
 
 <div class="container">
+
+  <% if current_user && @group_admins.include?(current_user) %>
+    <div id="pending-applcations">
+    <h1>Pending Applications</h1>
+        <% @applied_users.each do |user| %>
+        <div><%= user.name %></div>
+        <!-- reject/accept buttons -->
+        <div class='button'>
+        <%= link_to accept_application_path(:id => @group.id, :user_id => user.id), method: :post do %>
+                Accept
+        <% end %>
+        </div>
+
+        <div class='button'>
+        <%= link_to reject_application_path(:id => @group.id, :user_id => user.id), method: :post do %>
+                Reject
+        <% end %>
+        </div>
+        <% end %>
+    </div>
+  <% end %>
+
   <div id="group-members">
     <h1>Admins</h1>
     <% @group_admins.each do |admin| %>
