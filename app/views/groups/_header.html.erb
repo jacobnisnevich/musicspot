@@ -4,6 +4,7 @@
   <div id="group-header-container" class="container">
     <div id="group-header-photo">
       <%= image_tag "group.png" %>
+      <div>Change image</div>
     </div>
     <div id="group-header-info">
       <div id="group-header-name">
@@ -27,7 +28,13 @@
   </div>
 </div>
 
-<div id="image-upload-popup"></div>
+<div id="image-upload-popup">
+  <input type="file" id="image-upload-file" accept="image/*">
+  <label id="image-upload-file-button" for="image-upload-file" class="button">Select an image</label>
+  <div id="image-upload-separator">OR</div>
+  <input type="text" id="image-upload-text" placeholder="Enter an image url">
+  <div id="image-upload-button" class="button">Submit</div>
+</div>
 
 <div id="group-nav">
   <div class="container">
