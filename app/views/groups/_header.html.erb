@@ -37,7 +37,14 @@
       <% end %>
         <%= link_to "Newsfeed", :group_page, id: "show-button" %>
       </div>
-      <div id="group-nav-events">Events</div>
+
+      <% if selected == 'events' %>
+        <div id="group-nav-events" class="selected">
+      <% else %>
+        <div id="group-nav-events">
+      <% end %>
+        <%= link_to "Events", :group_events, id: "events-button" %>
+      </div>
 
       <% if selected == 'members' %>
         <div id="group-nav-members" class="selected">

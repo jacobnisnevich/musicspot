@@ -37,7 +37,7 @@ class EventsController < ApplicationController
 
   def submit
     @event = Event.new(event_params)
-    @event.groups << Group.find_by(@group_id)
+    @event.groups << Group.find_by(id: params[:id])
 
     if (@event.save)
       redirect_to '/events'
