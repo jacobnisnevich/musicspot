@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/groups/new', to: 'groups#new'
   post '/groups/new/submit', to: 'groups#submit'
   get '/group/:id/new_event', to: 'events#new'
+  post '/group/:id/new_event', to: 'events#submit', as: 'event_create'
   get '/group/:id', to: 'groups#show', as: 'group_page'
   get '/group/:id/members', to: 'groups#members', as: 'group_members'
   post '/group/:id', to:'announcements#create'
@@ -13,9 +14,9 @@ Rails.application.routes.draw do
   delete '/group/:group_id/announcement/:id', to:'announcements#destroy', as:'delete_announcement'
   patch '/groups/:id/announcement/:announcement_id', to:'announcements#update', as:'update_announcement'
   get '/group/:id/about', to: 'groups#about', as: 'group_about'
+  get '/group/:id/events', to: 'groups#events', as: 'group_events'
 
   get '/events', to: 'events#home'
-  post '/events/new/submit', to: 'events#submit'
   get 'event/:id', to: 'events#show', as: 'event_page'
   post '/event/add_user', to: 'events#add_user'
   post '/event/remove_user', to: 'events#remove_user'

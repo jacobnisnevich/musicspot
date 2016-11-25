@@ -8,7 +8,7 @@
 <%= form_for @profile, :url => { :controller => :profiles, :action => :submit } do |f| %>
   <div id="edit-profile-form">
     <% @profile.attributes.each_pair do |name, value| %>
-      <% if name != "id" %>
+      <% if name != "id"  && name != "availability" %>
         <div>
           <%= f.label name %>
           <%= f.text_field name, class: 'form-control' , :value => value %>
@@ -16,7 +16,42 @@
       <% end %>
     <% end %>
 
+
     <div>
+      <%= f.label "Availability" %>
+      <div class="time-availability-box">
+        <table>
+        <% (0..6).each do |i| %>
+          <tr>
+            <td><%= Date::DAYNAMES[i] %></td>
+            <td>12:00 AM 
+            <%= hidden_field_tag "hours[#{i*24}]", 0 %>
+            <%= check_box_tag "hours[#{i*24}]"%>       
+            </td>
+            <% (1..11).each do |j| %>
+              <td><%= j %>:00 AM
+              <%= hidden_field_tag "hours[#{i*24 + j}]", 0 %>
+              <%= check_box_tag "hours[#{i*24 + j}]" %>
+              </td>
+            <% end %>
+            <td>12:00 PM
+            <%= hidden_field_tag "hours[#{i*24 + 12}]", 0 %> 
+            <%= check_box_tag "hours[#{i*24 + 12}]" %>            
+            </td>
+            <% (1..11).each do |j| %>
+              <td><%= j %>:00 PM
+              <%= hidden_field_tag "hours[#{i*24 + 12 + j}]", 0 %>
+              <%= check_box_tag "hours[#{i*24 + 12 + j}]" %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+    
+
+
       <%= f.submit "Save profile", class: "button" %>
     </div>
   </div>

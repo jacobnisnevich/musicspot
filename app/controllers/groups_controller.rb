@@ -98,6 +98,14 @@ class GroupsController < ApplicationController
     end
   end
 
+  def events
+    @full_width = true
+    @group = Group.find_by(id: params[:id])
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+    @events = @group.events
+  end
+
   private
 
   def group_params

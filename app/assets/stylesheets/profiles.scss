@@ -75,6 +75,11 @@
   .value {
     flex: 4;
   }
+
+  .time-availability-box {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
 }
 
 /* Edit Profile Form */
@@ -114,4 +119,10 @@
       margin-top: 5px;
     }
   }
+
+  .time-availability-box {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
 }
+

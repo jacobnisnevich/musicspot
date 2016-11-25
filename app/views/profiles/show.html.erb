@@ -20,13 +20,46 @@
   <div id="profile-about-title">About</div>
   <div id="profile-about-body"> 
     <% @profile.attributes.each_pair do |name, value| %>
-      <% if name != "id" %>
+      <% if name != "id"  && name != "availability" %>
         <div class="pair">
           <div class="key"><%= name.titleize %></div>
           <div class="value"><%= value %></div>
         </div>
       <% end %>
+
+      <% if name == "availability" %>
+        <div class="pair">
+          <div class="key"><%= name.titleize %></div>
+          <div class="value time-availability-box">
+            <table>
+            <% (0..6).each do |i| %>
+              <tr>
+                <td><%= Date::DAYNAMES[i] %></td>
+                <td>12:00 AM 
+                <%= check_box_tag "", "", @profile.availability[(i*24)] == "1", disabled: true%>       
+                </td>
+                <% (1..11).each do |j| %>
+                  <td><%= j %>:00 AM
+                  <%= check_box_tag "", "", @profile.availability[(i*24 + j)] == "1", disabled: true%>
+                  </td>
+                <% end %>
+                <td>12:00 PM
+                <%= check_box_tag "", "", @profile.availability[(i*24 + 12)] == "1", disabled: true%>            
+                </td>
+                <% (1..11).each do |j| %>
+                  <td><%= j %>:00 PM
+                  <%= check_box_tag "", "", @profile.availability[(i*24 + 12 + j)] == "1", disabled: true%>
+                  </td>
+                <% end %>
+              </tr>
+            <% end %>
+            </table>
+          </div>
+        </div>
+      <% end %>
+
     <% end %>
+
   </div>
 </div>
 
