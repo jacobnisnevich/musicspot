@@ -1,32 +1,38 @@
 <%= render partial: 'header', locals: {selected: 'events'} %>
 
 <div class="container">
-	<h1>Scheduled Events</h1>
+  <h1>Scheduled Events</h1>
 
-	<div id="group-events-results">
-	  <table>
-	    <thead>
-	      <tr>
-	        <th></th>
-	        <th>Name</th>
-	        <th>Description</th>
-	        <th>Location</th>
-	        <th>Date</th>
-	        <th></th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <% @events.each do |event| %>
-	        <tr>
-	          <td><%= image_tag(event.image, class: "event-thumbnail") unless event.image.blank? %></td>
-	          <td><%= event.name %></td>
-	          <td><%= event.description %></td>
-	          <td><%= event.location %></td>
-	          <td><%= event.start_datetime.to_date unless event.start_datetime.nil? %></td>
-	          <td><a href="/event/<%= event.id %>"><i class="material-icons">open_in_browser</i></a></td>
-	        </tr>
-	      <% end %>
-	    </tbody>
-	  </table>
-	</div>
+  <div id="group-events-results">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @events.length == 0 %>
+          <tr>
+            <td colspan="6" style="text-align: center; font-size: 20px; padding: 40px 0;"><i>No Events Scheduled</i></td>
+          </tr>
+        <% else %>
+          <% @events.each do |event| %>
+            <tr>
+              <td><%= image_tag(event.image, class: "event-thumbnail") unless event.image.blank? %></td>
+              <td><%= event.name %></td>
+              <td><%= event.description %></td>
+              <td><%= event.location %></td>
+              <td><%= event.start_datetime.to_date unless event.start_datetime.nil? %></td>
+              <td><a href="/event/<%= event.id %>"><i class="material-icons">open_in_browser</i></a></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
