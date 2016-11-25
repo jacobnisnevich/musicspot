@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   patch '/groups/:id/announcement/:announcement_id', to:'announcements#update', as:'update_announcement'
   get '/group/:id/about', to: 'groups#about', as: 'group_about'
   get '/group/:id/events', to: 'groups#events', as: 'group_events'
+  post '/groups/change_image', to: 'groups#change_image'
 
   get '/events', to: 'events#home'
   get 'event/:id', to: 'events#show', as: 'event_page'

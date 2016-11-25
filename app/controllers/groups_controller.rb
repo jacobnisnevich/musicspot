@@ -106,6 +106,16 @@ class GroupsController < ApplicationController
     @events = @group.events
   end
 
+  def change_image
+    group_id = params[:id]
+    group = Group.find(group_id)
+    group.image_url = params[:image_url]
+
+    if (group.save)
+      redirect_to "/group/#{group_id}"
+    end
+  end
+
   private
 
   def group_params
