@@ -21,31 +21,30 @@
       <%= f.label "Availability" %>
       <div class="time-availability-box">
         <table>
-        <% (0..6).each do |i| %>
-          <tr>
-            <td><%= Date::DAYNAMES[i] %></td>
-            <td>12:00 AM 
-            <%= hidden_field_tag "hours[#{i*24}]", 0 %>
-            <%= check_box_tag "hours[#{i*24}]"%>       
-            </td>
+         <thead>
+            <th>Day</th>
+            <th>12:00 AM</th>
             <% (1..11).each do |j| %>
-              <td><%= j %>:00 AM
-              <%= hidden_field_tag "hours[#{i*24 + j}]", 0 %>
-              <%= check_box_tag "hours[#{i*24 + j}]" %>
-              </td>
+              <th><%= j %>:00 AM</th>
             <% end %>
-            <td>12:00 PM
-            <%= hidden_field_tag "hours[#{i*24 + 12}]", 0 %> 
-            <%= check_box_tag "hours[#{i*24 + 12}]" %>            
-            </td>
+            <th>12:00 PM</th>
             <% (1..11).each do |j| %>
-              <td><%= j %>:00 PM
-              <%= hidden_field_tag "hours[#{i*24 + 12 + j}]", 0 %>
-              <%= check_box_tag "hours[#{i*24 + 12 + j}]" %>
-              </td>
+              <th><%= j %>:00 PM</th>
             <% end %>
-          </tr>
-        <% end %>
+          </thead>
+          <tbody>
+            <% (0..6).each do |i| %>
+              <tr>
+                <td><%= Date::DAYNAMES[i] %></td>
+                <% (0..23).each do |j| %>
+                <td>
+                  <%= hidden_field_tag "hours[#{i*24 + j}]", 0 %>
+                  <%= check_box_tag "hours[#{i*24 + j}]"%>       
+                </td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
         </table>
       </div>
     </div>
