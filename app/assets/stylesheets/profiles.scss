@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$slideDistance: 100;
+$slideDuration: .4s;
+
+@function rem($val) {
+  @return #{$val / 16}rem;
+}
+
 /* Profile Page */
 
 #profile-header {
@@ -82,6 +89,74 @@
   }
 }
 
+.time-availability-table {
+  td:not(:first-child) {
+    min-width: 50px;
+    text-align: center;
+  }
+
+  tbody td:first-child {
+    font-weight: bold;
+  }
+
+  tbody:before {
+    content: "-";
+    display: block;
+    line-height: 1em;
+    color: transparent;
+  }
+
+  input[type=checkbox] {
+    position: relative;
+    top: rem(-6);
+    margin: 0 1rem 0 0 ;
+    cursor: pointer;
+    
+    &:before {
+      transition: all .1s ease-in-out;
+      -webkit-transition: all .1s ease-in-out;
+      
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: -5px;
+      z-index: 1;
+      width: 1.2rem;
+      height: 1.2rem;
+      border: 2px solid white; 
+    }
+    
+    &:checked {
+      &:before {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+
+        left: 0;
+        top: 0;
+        width: 1rem;    
+        height: .5rem;
+        border-color: #009688;
+        border-top-style: none;
+        border-right-style: none;
+      } 
+    }
+    
+    &:after {
+      content: "";
+      
+      position: absolute;
+      top: rem(-2);
+      left: 0;
+      width: 1.1rem;
+      height: 1.1rem;
+      background: #fff;
+      cursor: pointer;
+      border-radius: 2px;
+      box-shadow: inset 1px 1px 3px #777;
+    }
+  }
+}
+
 /* Edit Profile Form */
 
 #edit-profile-form {
@@ -114,15 +189,81 @@
 
   input[type="submit"] {
     margin: 0 auto;
-
-    &:hover {
-      margin-top: 5px;
-    }
+    display: block;
   }
 
   .time-availability-box {
     overflow-x: scroll;
     overflow-y: hidden;
   }
-}
 
+  .time-availability-table {
+    color: white;
+
+    td:not(:first-child) {
+      min-width: 50px;
+      text-align: center;
+    }
+
+    tbody td:first-child {
+      font-weight: bold;
+    }
+
+    tbody:before {
+      content: "-";
+      display: block;
+      line-height: 1em;
+      color: transparent;
+    }
+
+    input[type=checkbox] {
+      position: relative;
+      top: rem(-6);
+      margin: 0 1rem 0 0 ;
+      cursor: pointer;
+      
+      &:before {
+        transition: all .1s ease-in-out;
+        -webkit-transition: all .1s ease-in-out;
+        
+        content: "";
+        position: absolute;
+        left: -2px;
+        top: -5px;
+        z-index: 1;
+        width: 1.2rem;
+        height: 1.2rem;
+        border: 2px solid #4DB6AC; 
+      }
+      
+      &:checked {
+        &:before {
+          transform: rotate(-45deg);
+          -webkit-transform: rotate(-45deg);
+
+          left: 0;
+          top: 0;
+          width: 1rem;    
+          height: .5rem;
+          border-color: #009688;
+          border-top-style: none;
+          border-right-style: none;
+        } 
+      }
+      
+      &:after {
+        content: "";
+        
+        position: absolute;
+        top: rem(-2);
+        left: 0;
+        width: 1.1rem;
+        height: 1.1rem;
+        background: #fff;
+        cursor: pointer;
+        border-radius: 2px;
+        box-shadow: inset 1px 1px 3px #777;
+      }
+    }
+  }
+}
