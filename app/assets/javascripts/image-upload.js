@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   $(document).on('click', '#group-header-photo', function() {
     $('#image-upload-popup, #blanket').fadeIn(400);
-    $('#image-upload-submit').on('click', { name: "Add parameters" }, onSumbitClicked);
+    $('#image-upload-submit').on('click', { path: "/groups/change_image" }, onSumbitClicked);
 
     // Reset form fields and info to be blank
     $('#image-upload-info').text('');
@@ -26,14 +26,14 @@ function onSumbitClicked(event) {
   var file = document.getElementById('image-upload-file').files[0];
   var url = document.getElementById('image-upload-text').value;
   if (file)
-    upload(file);
+    upload(file, event.data.path);
   else if (url)
-    upload(url);
+    upload(url, event.data.path);
   else
     $('#image-upload-info').text("No image selected.");
 }
 
-function upload(file) {
+function upload(file, path) {
   $('#image-upload-info').text("Uploading...");
 
   var fd = new FormData();
@@ -45,10 +45,19 @@ function upload(file) {
   xhr.onload = function() {
     if (this.status == 200) {
       var link = JSON.parse(xhr.responseText).data.link;
-      $('#image-upload-info').text(link);
+      $.ajax({
+        url: path,
+        method: 'POST',
+        data: {
+          id: $('#image-upload-popup').data('id'),
+          image_url: link
+         },
+        error: function() {
+          $('#image-upload-info').text("Error Type 2. Please try again.");
+        }
+      });
     } else {
       $('#image-upload-info').text("Error. Please try again.");
-      console.log( this.status );
     }
   }
   xhr.send(fd);

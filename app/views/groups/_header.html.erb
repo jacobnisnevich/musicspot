@@ -3,7 +3,7 @@
 <div id="group-header">
   <div id="group-header-container" class="container">
     <div id="group-header-photo">
-      <%= image_tag "group.png" %>
+      <%= image_tag @group.image_url.blank? ? "group.png" : @group.image_url %>
       <div>Change image</div>
     </div>
     <div id="group-header-info">
@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<div id="image-upload-popup">
+<div id="image-upload-popup" data-id="<%= @group.id %>">
   <input type="file" id="image-upload-file" accept="image/*">
   <label id="image-upload-file-button" for="image-upload-file" class="button">Select an image</label>
   <div id="image-upload-separator">OR</div>
