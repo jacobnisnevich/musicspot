@@ -1,6 +1,8 @@
 $(document).ready(function() {
 
   $(document).on('click', '#group-header-photo', function() {
+    if (!$('#image-upload-popup').length)
+        return;
     $('#image-upload-popup, #blanket').fadeIn(400);
     $('#image-upload-submit').on('click', { path: "/groups/change_image" }, onSumbitClicked);
 
