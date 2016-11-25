@@ -25,13 +25,57 @@
 
   <div id="group-members">
     <h1>Admins</h1>
-    <% @group_admins.each do |admin| %>
-    <div><%= admin.name %></div>
-    <% end %>
+
+    <div class="group-admins-list">
+      <% @group_admins.each do |admin| %>
+        <div class="group-admin-item">
+          <div class="group-admin-profile">
+            <div class="group-admin-picture">
+              <%= image_tag "https://graph.facebook.com/#{admin.uid}/picture?type=square" %>
+            </div>
+            <div class="group-admin-name">
+              <%= admin.name %>
+            </div>
+          </div>
+
+          <div class="group-admin-options">
+            <div>
+              <a href="/profile/<%= admin.uid %>"><i class="material-icons">open_in_browser</i></a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
     <h1>Members</h1>
-    <% @group_members.each do |member| %>
-    <div><%= member.name %></div>
-    <% end %>
+
+    <div class="group-members-list">
+      <% @group_members.each do |member| %>
+        <div class="group-member-item">
+          <div class="group-member-profile">
+            <div class="group-member-picture">
+              <%= image_tag "https://graph.facebook.com/#{member.uid}/picture?type=square" %>
+            </div>
+            <div class="group-member-name">
+              <%= member.name %>
+            </div>
+          </div>
+
+          <div class="group-member-options">
+            <% if current_user && @group_admins.include?(current_user) %>
+              <div>
+                <i class="material-icons">clear</i>
+              </div>
+              <div>
+                <i class="material-icons">person_add</i>
+              </div>
+            <% end %>
+            <div>
+              <a href="/profile/<%= member.uid %>"><i class="material-icons">open_in_browser</i></a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
