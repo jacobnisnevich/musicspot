@@ -6,12 +6,16 @@
   <div class="event-subtitle"> Location:
     <span class="event-data"> <%= @event.location %> </span>
   </div>
-  <div class="event-subtitle"> Start:
-    <span class="event-data"> <%= @event.start_datetime %> </span>
-  </div>
-  <div class="event-subtitle"> End:
-    <span class="event-data"> <%= @event.end_datetime %> </span>
-  </div>
+  <% if @event.start_datetime %>
+    <div class="event-subtitle"> Start:
+      <span class="event-data"> <%= @event.start_datetime.strftime("%B %-d, %Y, %l:%M%p") %> </span>
+    </div>
+  <% end %>
+  <% if @event.end_datetime %>
+    <div class="event-subtitle"> End:
+      <span class="event-data"> <%= @event.end_datetime.strftime("%B %-d, %Y, %l:%M%p") %> </span>
+    </div>
+  <% end %>
   <div class="event-subtitle"> Description </div>
   <div class="event-data"> <%= @event.description %> </div>
   <div class="event-subtitle"> Hosted By </div>
