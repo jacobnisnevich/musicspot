@@ -42,6 +42,21 @@ class EventsController < ApplicationController
         end
       end
     end
+
+    @max_people = @group_availability.max
+    max_index = @group_availability.index(@max_people)
+    @best_day = Date::DAYNAMES[max_index / 24]
+    hour = max_index % 24
+    if hour == 0
+      @best_hour = "12:00 AM"
+    elsif hour == 12
+      @best_hour = "12:00 PM"
+    elsif hour < 12
+      @best_hour = hour.to_s + ":00 AM"
+    else
+      @best_hour = (hour - 12) + ":00 PM"
+    end
+
   end
 
   def submit
@@ -49,7 +64,7 @@ class EventsController < ApplicationController
     @event.groups << Group.find_by(id: params[:id])
 
     if (@event.save)
-      redirect_to "/event/#{@event.id}"
+      redirect_to '/events'
     else
       render 'new'
     end
