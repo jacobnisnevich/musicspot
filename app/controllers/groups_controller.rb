@@ -165,6 +165,22 @@ class GroupsController < ApplicationController
     end
   end
 
+  def edit_media
+    @full_width = true
+    @group = Group.find_by(id: params[:id])
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+  end
+
+  def update_media
+    @group = Group.find_by(id: params[:id])
+    if @group.update(group_params)
+      redirect_to :group_media, notice: 'Media page was successfully updated.'
+    else
+      render :edit_media
+    end
+  end
+
   private
 
   def group_params

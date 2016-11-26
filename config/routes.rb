@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   patch '/groups/:id/about/', to:'groups#update_about', as: 'update_about'
   get '/group/:id/events', to: 'groups#events', as: 'group_events'
   get '/group/:id/media', to: 'groups#media', as: 'group_media'
+  get '/group/:id/media/edit', to: 'groups#edit_media', as: 'edit_media'
+  patch '/groups/:id/media/', to:'groups#update_media', as: 'update_media'
   post '/groups/change_image', to: 'groups#change_image'
 
   get '/events', to: 'events#home'
