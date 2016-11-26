@@ -1,4 +1,6 @@
 require 'GoogleMapsAPI'
+require 'SoundCloudAPI'
+require 'YouTubeAPI'
 require 'search/DistanceSort'
 require 'search/TimeSort'
 require 'will_paginate/array'
@@ -58,6 +60,15 @@ class GroupsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def media
+    @full_width = true
+    @group = Group.find_by(id: params[:id])
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+
+    @embed_tracks = SoundCloudAPI.get_tracks(@group.soundcloud_url)
   end
 
   def apply

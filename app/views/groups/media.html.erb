@@ -1,0 +1,17 @@
+<%= render partial: 'header', locals: {selected: 'about'} %>
+
+<div class="container">
+	<div id="soundcloud_tracks">
+	<h1>SoundCloud Tracks</h1>
+
+	<% @embed_tracks.each do |track| %>
+		<%= track.date %>
+		<br>
+		<%= track.embed_html %>
+	<% end %>
+	</div>
+
+	<div id="youtube_tracks">
+
+	</div>
+</div>

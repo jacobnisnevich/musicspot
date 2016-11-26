@@ -49,7 +49,7 @@
       <% else %>
         <div id="group-nav-newsfeed">
       <% end %>
-        <%= link_to "Newsfeed", :group_page, id: "show-button" %>
+        <%= link_to "Newsfeed", :group_page, id: "show-button", class: "group-page-button" %>
       </div>
 
       <% if selected == 'events' %>
@@ -57,7 +57,7 @@
       <% else %>
         <div id="group-nav-events">
       <% end %>
-        <%= link_to "Events", :group_events, id: "events-button" %>
+        <%= link_to "Events", :group_events, id: "events-button", class: "group-page-button" %>
       </div>
 
       <% if selected == 'members' %>
@@ -65,7 +65,15 @@
       <% else %>
         <div id="group-nav-members">
       <% end %>
-        <%= link_to "Members", :group_members, id: "members-button" %>
+        <%= link_to "Members", :group_members, id: "members-button", class: "group-page-button" %>
+      </div>
+
+      <% if selected == 'media' %>
+        <div id="group-nav-media" class="selected">
+      <% else %>
+        <div id="group-nav-media">
+      <% end %>
+        <%= link_to "Media", :group_media, id: "media-button", class: "group-page-button" %>
       </div>
 
       <% if selected == 'about' %>
@@ -73,7 +81,7 @@
       <% else %>
         <div id="group-nav-about">
       <% end %>
-        <%= link_to "About", :group_about, id: "about-button" %>
+        <%= link_to "About", :group_about, id: "about-button", class: "group-page-button" %>
       </div>
     </div>
   </div>
