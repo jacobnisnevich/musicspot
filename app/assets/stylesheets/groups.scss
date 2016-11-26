@@ -226,67 +226,114 @@
 
 #group-header-container {
   display: flex;
+  justify-content: space-between;
 }
 
-#group-header-photo {
-  width: 160px;
-  height: 160px;
-  margin: 20px;
-  box-sizing: border-box;
-  text-align: center;
-  font-size: 14px;
+#group-header-right {
+  display: flex;
 
-  > img {
-    width: 150px;
-    height: 150px;
-    border: 5px solid #009688;
-    border-radius: 3px;
-    box-shadow: #888 2px 2px 10px;
-  }
-
-  > div {
+  #group-header-photo {
     width: 160px;
     height: 160px;
-    position: absolute;
-    top: 20px;
-    line-height: 160px;
-    background: rgba(0, 0, 0, 0.55);;
-    color: white;
-    visibility: hidden;
-    cursor: pointer;
+    margin: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 14px;
+
+    > img {
+      width: 150px;
+      height: 150px;
+      border: 5px solid #009688;
+      border-radius: 3px;
+      box-shadow: #888 2px 2px 10px;
+    }
+
+    > div {
+      width: 160px;
+      height: 160px;
+      position: absolute;
+      top: 20px;
+      line-height: 160px;
+      background: rgba(0, 0, 0, 0.55);;
+      color: white;
+      visibility: hidden;
+      cursor: pointer;
+    }
+
+    &:hover > div {
+      visibility: visible;
+    }
   }
 
-  &:hover > div {
-    visibility: visible;
+  #group-header-info {
+    margin: 20px;
+  }
+
+  #group-header-name {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  #group-header-location {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  #group-header-description {
+    font-size: 14px;
   }
 }
 
-#group-header-info {
-  margin: 20px;
-}
-
-#group-header-name {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-#group-header-location {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-#group-header-description {
-  font-size: 14px;
-}
-
-#group-header-members {
-  margin: 20px;
+#group-header-left {
+  display: flex;
   margin-left: auto;
-  font-weight: bold;
-  flex-basis: 100px;
-  text-align: right;
+  flex-basis: 200px;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  #group-header-members {
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #EDEDED;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+      0 1px 5px 0 rgba(0,0,0,0.12),
+      0 3px 1px -2px rgba(0,0,0,0.2);
+    margin: 20px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    text-align: right;
+    align-items: center;
+    display: flex;
+
+    i {
+      margin-right: 10px;
+    }
+  }
+
+  #group-header-edit {
+    align-self: flex-end;
+    margin: 20px;
+
+    .button {
+      background-color: #888;
+      border-radius: 3px;
+      box-shadow: 2px 2px 10px #999;
+
+      a i {
+        color: #FFF;
+      }
+    }
+
+    #group-header-edit-button {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      font-size: 18px;
+    }
+  }
 }
 
 #group-nav {
@@ -509,5 +556,63 @@
   .soundcloud-track-date, .youtube-track-date {
     text-align: right;
     margin-bottom: 10px;
+  }
+}
+
+/* Group Page - Edit */
+
+.edit-group-form {
+  width: 100%;
+  background-color: #4DB6AC;
+  border-radius: 2px;
+  box-shadow: #AAA 2px 2px 10px;
+  padding: 20px 20%;
+  box-sizing: border-box;
+
+  div {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  label {
+    flex: 1;
+    text-align: right;
+    color: #FFF;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+  }
+
+  input[type="text"], textarea {
+    flex: 3;
+    border: 1px solid #4DB6AC;
+  }
+}
+
+#edit-media, #edit-about {
+  margin: 20px 0;
+  display: flex;
+
+  .button {
+    background-color: #AAA;
+    border-radius: 3px;
+    margin-left: auto;
+
+    a {
+      display: flex;
+      color: #FFF;
+      align-items: center;
+      padding: 10px; 
+      font-size: 18px;
+
+      i {
+        color: #FFF;
+
+        &:hover {
+          text-shadow: none;
+        }
+      }
+    }
   }
 }

@@ -1,20 +1,20 @@
 <%= render partial: 'header', locals: {selected: 'about'} %>
 
 <div class="container">
-	<% if current_user && @group_admins.include?(current_user) %>
-	  <div id="about-edit-button">
-	    <div class="button">
-	      <%= link_to edit_about_path, id: "edit-about-button" do %>
-	        <div>Edit About &nbsp;</div>
-	        <div><i class="material-icons">create</i></div>
-	      <% end %>
-	    </div>
-	  </div>
-	<% end %>
+  <% if current_user && @group_admins.include?(current_user) %>
+    <div id="edit-about">
+      <div class="button">
+        <%= link_to edit_about_path, id: "edit-about-button" do %>
+          <div>Edit About &nbsp;</div>
+          <div><i class="material-icons">create</i></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
-	<% if defined? @group.about %>
-		<div id="group-body">
-		    <%= @group.about.html_safe %>
-		</div>
-	<% end %>
+  <% if !@group.about.nil? && !@group.about.blank? %>
+    <div id="group-body">
+      <%= @group.about.html_safe %>
+    </div>
+  <% end %>
 </div>
