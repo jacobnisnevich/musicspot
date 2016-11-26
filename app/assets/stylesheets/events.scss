@@ -229,6 +229,42 @@
   input[type="text"], textarea {
     border: 1px solid #4DB6AC;
   }
+
+  .scheduling-assistant {
+    padding: 15px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    background-color: #FFF;
+    border-radius: 3px;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+      0 1px 5px 0 rgba(0,0,0,0.12),
+      0 3px 1px -2px rgba(0,0,0,0.2);
+
+    .scheduling-assistant-title {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 16px;
+      border-bottom: 1px solid #4DB6AC;
+      padding-bottom: 15px;
+    }
+
+    .scheduling-assistant-body {
+      b {
+        font-family: 'Quicksand', sans-serif;
+        font-weight: 300;
+        font-size: 16px;
+      }
+    }
+  }
+  
+
+  .time-availability-box {
+    overflow-x: scroll;
+    margin-top: 10px;
+  }
+
+  .time-availability-table {
+    color: white;
+  }
 }
 
 /* Event Page */

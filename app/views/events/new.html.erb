@@ -47,10 +47,12 @@
         </div>
       </div>
       <% if @group_availability %>
-      <div>
-        Scheduling Assistant: Here is how many of your group members are available at each time based upon the availabilities selected in their profiles.
-
-        Based on your groups members: it looks like <%= @best_day %> at <%= @best_hour %> would be a good time!
+      <div class="scheduling-assistant">
+        <div class="scheduling-assistant-title">Scheduling Assistant</div>
+        <div class="scheduling-assistant-body">
+          <p>Here is how many of your group members are available at each time based upon the availabilities selected in their profiles.</p>
+          <p>Based on your groups members: it looks like <b><%= @best_day %> at <%= @best_hour %></b> would be a good time!</p>
+        </div>
       </div>
       <div class="time-availability-box">
         <table class="time-availability-table">
