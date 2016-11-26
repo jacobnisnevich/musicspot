@@ -116,6 +116,27 @@ class GroupsController < ApplicationController
     end
   end
 
+  def add_admin
+    @group = Group.find_by(id: params[:id])
+    user = User.find_by(id: params[:user_id])
+    @group.admin_users << user
+
+    if @group.save
+      redirect_to "/group/#{@group.id}/members"
+    end
+  end
+
+  def remove_member
+    @group = Group.find_by(id: params[:id])
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+    @group.memberships.find_by(user_id: params[:user_id]).destroy
+
+    if @group.save
+      redirect_to "/group/#{@group.id}/members"
+    end
+  end
+
   private
 
   def group_params
