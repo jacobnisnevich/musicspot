@@ -1,9 +1,6 @@
 require 'soundcloud'
 
 class SoundCloudAPI
-  include HTTParty
-  format :json
-
   attr_accessor :embed_tracks
 
   def initialize(embed_tracks)
