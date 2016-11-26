@@ -64,10 +64,14 @@
           <div class="group-member-options">
             <% if current_user && @group_admins.include?(current_user) %>
               <div>
+                <%= link_to remove_member_path(:id => @group.id, :user_id => member.id), method: :post do %>
                 <i class="material-icons">clear</i>
+                <% end %>
               </div>
               <div>
+                <%= link_to add_admin_path(:id => @group.id, :user_id => member.id), method: :post do %>
                 <i class="material-icons">person_add</i>
+                <% end %>
               </div>
             <% end %>
             <div>

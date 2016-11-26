@@ -31,7 +31,9 @@ Rails.application.routes.draw do
 
   post '/group/:id/apply', to: 'groups#apply', as: 'apply_to_group'
   post '/group/:id/accept_application/:user_id', to: 'groups#accept', as: 'accept_application'
-  post '/group/:id/reject_application/:user_id', to: 'groups#reject', as: 'reject_application/'
+  post '/group/:id/reject_application/:user_id', to: 'groups#reject', as: 'reject_application'
+  post '/group/:id/add_admin/:user_id', to: 'groups#add_admin', as: 'add_admin'
+  post '/group/:id/remove_member/:user_id', to: 'groups#remove_member', as: 'remove_member'
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
