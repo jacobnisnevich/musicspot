@@ -248,6 +248,8 @@
     }
 
     .scheduling-assistant-body {
+      border-bottom: 1px solid #4DB6AC;
+
       b {
         font-family: 'Quicksand', sans-serif;
         font-weight: 300;
@@ -256,14 +258,13 @@
     }
   }
   
-
   .time-availability-box {
     overflow-x: scroll;
     margin-top: 10px;
-  }
 
-  .time-availability-table {
-    color: white;
+    th {
+      padding-bottom: 0;
+    }
   }
 }
 
