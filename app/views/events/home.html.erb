@@ -1,24 +1,31 @@
 <% provide(:title, "Events") %>
 <h1>Events</h1>
 
-<div id="find-events-search-container">
-<%= form_tag events_path, :id => 'find-events-searches', :method => 'get' do %>
-  <div id="find-events-by-name">
-    <label>Name</label>
-      <%= text_field_tag :name, params[:name], :id => 'search-name-input', placeholder: "Enter Name" %>
+
+<div id="find-events-top">
+  <div id="find-events-header">
+    <div id="find-events-title">Discover Events</div>
   </div>
-  <div id="find-events-by-zip">
-    <label>Zip Code</label>
-      <%= text_field_tag :zip, params[:zip], :id => 'search-zip-input', placeholder: "Enter Zip" %>
+
+  <div id="find-events-search-container">
+  <%= form_tag events_path, :id => 'find-events-searches', :method => 'get' do %>
+    <div id="find-events-by-name">
+      <label>Name</label>
+        <%= text_field_tag :name, params[:name], :id => 'search-name-input', placeholder: "Enter Name" %>
+    </div>
+    <div id="find-events-by-zip">
+      <label>Zip Code</label>
+        <%= text_field_tag :zip, params[:zip], :id => 'search-zip-input', placeholder: "Enter Zip" %>
+    </div>
+    <div id="zip-search-strategy" style="display: none">
+      <%= radio_button_tag(:search, "distance") %>
+      <%= label_tag(:search_dist, "Search by distance") %>
+      <%= radio_button_tag(:search, "time") %>
+      <%= label_tag(:search_time, "Search by time") %>
+    </div>
+    <%= submit_tag "Search", :id => 'search-events-button', :class => 'button' %>
+  <% end %>
   </div>
-  <div id="zip-search-strategy" style="display: none">
-    <%= radio_button_tag(:search, "distance") %>
-    <%= label_tag(:search_dist, "Search by distance") %>
-    <%= radio_button_tag(:search, "time") %>
-    <%= label_tag(:search_time, "Search by time") %>
-  </div>
-  <%= submit_tag "Search", :id => 'search-events-button', :class => 'button' %>
-<% end %>
 </div>
 
 <div id="find-events-results-container">

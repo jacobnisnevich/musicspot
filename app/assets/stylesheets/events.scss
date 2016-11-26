@@ -3,22 +3,38 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* Events Home */
-#find-events-search-container {
+
+#find-events-top {
+  width: 100%;
+  background-color: #FFF;
+  border-radius: 2px;
+  box-shadow: #DDD 2px 2px 10px;
   margin-bottom: 30px;
-  padding: 10px;
+}
+
+#find-events-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  align-items: center;
+  border-bottom: 2px solid #4DB6AC;
+}
+
+#find-events-title {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+#find-events-search-container {
+  padding: 20px;
   width: 100%;
   box-sizing: border-box;
   background-color: #4DB6AC;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
-  display: flex;
-}
-
-#find-events-search-title {
-  flex: 1;
-  color: #FFF;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
 }
 
 #find-events-searches {
@@ -37,7 +53,12 @@
   }
 }
 
+#find-events-by-name, #find-events-by-zip {
+  display: inline-block;
+}
+
 #search-events-button {
+  margin: 0;
   font-family: 'Quicksand', sans-serif;
   text-decoration: none;
   font-size: 16px;
