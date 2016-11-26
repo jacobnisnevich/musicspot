@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   delete '/group/:group_id/announcement/:id', to:'announcements#destroy', as: 'delete_announcement'
   patch '/groups/:id/announcement/:announcement_id', to:'announcements#update', as:'update_announcement'
   get '/group/:id/about', to: 'groups#about', as: 'group_about'
+  get '/group/:id/about/edit', to: 'groups#edit_about', as: 'edit_about'
+  patch '/groups/:id/about/', to:'groups#update_about', as: 'update_about'
   get '/group/:id/events', to: 'groups#events', as: 'group_events'
   get '/group/:id/media', to: 'groups#media', as: 'group_media'
   post '/groups/change_image', to: 'groups#change_image'

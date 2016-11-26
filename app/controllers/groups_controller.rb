@@ -31,9 +31,9 @@ class GroupsController < ApplicationController
   def show
     @full_width = true
     @group = Group.find_by(id: params[:id])
-    @group_announcements = @group.announcements
     @group_members = @group.users
     @group_admins = @group.admin_users
+    @group_announcements = @group.announcements
     @applied_to_group = (Application.find_by(user: current_user, group_id: params[:id]) != nil) || (@group_members.include?(current_user)) || (@group_admins.include?(current_user))
   end
 
@@ -146,6 +146,22 @@ class GroupsController < ApplicationController
 
     if @group.save
       redirect_to "/group/#{@group.id}/members"
+    end
+  end
+
+  def edit_about
+    @full_width = true
+    @group = Group.find_by(id: params[:id])
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+  end
+
+  def update_about
+    @group = Group.find_by(id: params[:id])
+    if @group.update(group_params)
+      redirect_to :group_about, notice: 'About page was successfully updated.'
+    else
+      render :edit_about
     end
   end
 
