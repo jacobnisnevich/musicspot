@@ -1,3 +1,26 @@
+<h1>Your Groups</h1>
+
+<div id="home-groups">
+  <% @groups.each do |group| %>
+    <div class="home-newsfeed-item">
+      <div class="home-newsfeed-item-top">
+          <div>
+            <span class="home-newsfeed-item-title">
+              <%= group.name %>
+            </span>
+          </div>
+      </div>
+      <div class="group-newsfeed-item-body">
+        <%= group.description %>
+      </div>
+
+      <%= link_to group_page_path(id: group.id) do %>
+        <i class="material-icons">open_in_browser</i>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
 <h1>Your Newsfeed</h1>
 
 <div id="home-newsfeed">

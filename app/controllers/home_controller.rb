@@ -1,12 +1,12 @@
 class HomeController < ApplicationController
   def home
     if current_user
-      groups = current_user.groups
+      @groups = current_user.groups
 
       events = []
       announcements = []
 
-      groups.each do |group|
+      @groups.each do |group|
         events.concat(group.events)
         announcements.concat(group.announcements)
       end
