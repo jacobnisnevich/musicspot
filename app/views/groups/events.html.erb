@@ -1,6 +1,8 @@
 <%= render partial: 'header', locals: {selected: 'events'} %>
 
 <div class="container">
+  <h1>Scheduled Events</h1>
+  
   <% if current_user && @group_admins.include?(current_user) %>
     <div id="group-events-new-button">
       <div class="button">
@@ -11,8 +13,6 @@
       </div>
     </div>
   <% end %>
-
-  <h1>Scheduled Events</h1>
 
   <div id="group-events-results">
     <table>
