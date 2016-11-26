@@ -1,0 +1,37 @@
+<%= render partial: 'header', locals: {selected: 'about'} %>
+
+<div class="container">
+  <h1>Editing About</h1>
+
+  <div class="back-button">
+    <div class="button">
+      <%= link_to :group_about do %>
+        <div><i class="material-icons">arrow_back</i></div>
+        <div>&nbsp; Back</div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= form_for @group, :url => { :controller => :groups, :action => :update_about} do |f| %>
+    <% if @group.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+        <ul>
+        <% @group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div id="edit-group-form">
+      <div>
+        <%= f.label :about %>
+        <%= f.text_area :about, class: 'form-control' %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Edit About", class: "button" %>
+      </div>
+    </div>
+  <% end %>
+</div>
