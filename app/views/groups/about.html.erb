@@ -12,7 +12,9 @@
 	  </div>
 	<% end %>
 
-	<div id="group-body">
-	    <%= @group.about.html_safe %>
-	</div>
+	<% if defined? @group.about %>
+		<div id="group-body">
+		    <%= @group.about.html_safe %>
+		</div>
+	<% end %>
 </div>

@@ -57,8 +57,13 @@ class GroupsController < ApplicationController
   end
 
   def media
-    @soundcloud_embed_tracks = SoundCloudAPI.get_tracks(@group.soundcloud_url).embed_tracks
-    @youtube_embed_tracks = YouTubeAPI.get_videos(@group.youtube_url).embed_videos
+    if @group.soundcloud_url != ""
+      @soundcloud_embed_tracks = SoundCloudAPI.get_tracks(@group.soundcloud_url).embed_tracks
+    end
+
+    if @group.youtube_url != ""
+      @youtube_embed_tracks = YouTubeAPI.get_videos(@group.youtube_url).embed_videos
+    end
   end
 
   def apply
