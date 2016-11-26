@@ -75,16 +75,6 @@
       <% end %>
         <%= link_to "About", :group_about, id: "about-button" %>
       </div>
-
-      <% if current_user && @group_admins.include?(current_user) %>
-        <% if selected == 'new_event' %>
-          <div id="group-nav-create-event" class="selected">
-        <% else %>
-          <div id="group-nav-create-event">
-        <% end %>
-          <%= link_to "New Event", "/group/#{@group.id}/new_event", id: "new-event-button" %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>

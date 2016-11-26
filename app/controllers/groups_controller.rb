@@ -54,7 +54,7 @@ class GroupsController < ApplicationController
     @group.admin_users << current_user
 
     if (@group.save)
-      redirect_to '/groups'
+      redirect_to "/group/#{@group.id}"
     else
       render 'new'
     end

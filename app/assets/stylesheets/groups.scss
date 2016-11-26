@@ -397,6 +397,33 @@
 
 /* Group Page - Events */
 
+#group-events-new-button {
+  margin-top: 20px;
+  display: flex;
+
+  .button {
+    background-color: #AAA;
+    border-radius: 3px;
+    margin-left: auto;
+
+    a {
+      display: flex;
+      color: #FFF;
+      align-items: center;
+      padding: 10px;
+      font-size: 18px;
+
+      i {
+        color: #FFF;
+
+        &:hover {
+          text-shadow: none;
+        }
+      }
+    }
+  }
+}
+
 #group-events-results {
   width: 100%;
 

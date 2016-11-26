@@ -137,13 +137,13 @@ header {
     flex-wrap: wrap;
   }
 
-  #find-groups-by-name, #find-groups-by-zip {
+  #find-groups-by-name, #find-groups-by-zip, #find-events-by-name, #find-events-by-zip {
     display: flex;
     justify-content: space-between;
     width: 100%;
   }
 
-  #find-groups-by-zip {
+  #find-groups-by-zip, #find-events-by-zip {
     margin: 20px 0 0;
   }
 
@@ -152,7 +152,7 @@ header {
     margin: 20px 0 0;
   }
 
-  #search-groups-button {
+  #search-groups-button, #search-events-button {
     margin: 20px auto 0px;
   }
 

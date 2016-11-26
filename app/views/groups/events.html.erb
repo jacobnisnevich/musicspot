@@ -1,6 +1,17 @@
 <%= render partial: 'header', locals: {selected: 'events'} %>
 
 <div class="container">
+  <% if current_user && @group_admins.include?(current_user) %>
+    <div id="group-events-new-button">
+      <div class="button">
+        <%= link_to "/group/#{@group.id}/new_event", id: "new-event-button" do %>
+          <div>New Event &nbsp;</div>
+          <div><i class="material-icons">event</i></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
   <h1>Scheduled Events</h1>
 
   <div id="group-events-results">
@@ -27,7 +38,7 @@
               <td><%= event.name %></td>
               <td><%= event.description %></td>
               <td><%= event.location %></td>
-              <td><%= event.start_datetime.to_date unless event.start_datetime.nil? %></td>
+              <td><%= event.start_datetime.strftime("%B %-d, %Y") unless event.start_datetime.nil? %></td>
               <td><a href="/event/<%= event.id %>"><i class="material-icons">open_in_browser</i></a></td>
             </tr>
           <% end %>
