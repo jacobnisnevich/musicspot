@@ -6,6 +6,34 @@
   margin: 20px 0;
 }
 
+.home-groups-item {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  background-color: #FFF;
+  border-radius: 3px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+    0 1px 5px 0 rgba(0,0,0,0.12),
+    0 3px 1px -2px rgba(0,0,0,0.2);
+
+  .home-groups-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 15px 0 15px;
+
+    .home-groups-item-title {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 20px;
+    }
+  }
+
+  .home-groups-item-body {
+    padding: 15px;
+
+  }
+}
+
 .home-newsfeed-item {
   width: 100%;
   padding: 15px;
