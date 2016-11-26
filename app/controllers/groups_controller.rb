@@ -6,6 +6,9 @@ require 'search/TimeSort'
 require 'will_paginate/array'
 
 class GroupsController < ApplicationController
+  before_action :set_group_id, only: [:update_about, :update_media, :update_group]
+  before_action :set_group_vars, only: [:show, :members, :media, :about, :events, :edit_about, :edit_media, :edit_group]
+
   def home
     if params[:name].blank?
       @groups = Group.all.to_a
@@ -29,20 +32,11 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @full_width = true
-    @group = Group.find_by(id: params[:id])
     @group_announcements = @group.announcements
-    @group_members = @group.users
-    @group_admins = @group.admin_users
     @applied_to_group = (Application.find_by(user: current_user, group_id: params[:id]) != nil) || (@group_members.include?(current_user)) || (@group_admins.include?(current_user))
   end
 
   def members
-    @full_width = true
-    @group = Group.find_by(id: params[:id])
-    @group_members = @group.users
-    @group_admins = @group.admin_users
-
     @applied_users = @group.user_apps
   end
 
@@ -63,13 +57,14 @@ class GroupsController < ApplicationController
   end
 
   def media
-    @full_width = true
-    @group = Group.find_by(id: params[:id])
-    @group_members = @group.users
-    @group_admins = @group.admin_users
 
-    @soundcloud_embed_tracks = SoundCloudAPI.get_tracks(@group.soundcloud_url).embed_tracks
-    @youtube_embed_tracks = YouTubeAPI.get_videos(@group.youtube_url).embed_videos
+    if !@group.soundcloud_url.blank? && !@group.soundcloud_url.nil?
+      @soundcloud_embed_tracks = SoundCloudAPI.get_tracks(@group.soundcloud_url).embed_tracks
+    end
+
+    if !@group.youtube_url.blank? && !@group.youtube_url.nil?
+      @youtube_embed_tracks = YouTubeAPI.get_videos(@group.youtube_url).embed_videos
+    end
   end
 
   def apply
@@ -82,10 +77,6 @@ class GroupsController < ApplicationController
   end
 
   def about
-    @full_width = true
-    @group = Group.find_by(id: params[:id])
-    @group_members = @group.users
-    @group_admins = @group.admin_users
     render 'about'
   end
 
@@ -111,10 +102,6 @@ class GroupsController < ApplicationController
   end
 
   def events
-    @full_width = true
-    @group = Group.find_by(id: params[:id])
-    @group_members = @group.users
-    @group_admins = @group.admin_users
     @events = @group.events
   end
 
@@ -149,7 +136,51 @@ class GroupsController < ApplicationController
     end
   end
 
+  def update_about
+    if @group.update(group_params)
+      redirect_to :group_about, notice: 'About page was successfully updated.'
+    else
+      render :edit_about
+    end
+  end
+
+  def update_media
+    if @group.update(group_params)
+      redirect_to :group_media, notice: 'Media page was successfully updated.'
+    else
+      render :edit_media
+    end
+  end
+
+  def update_group
+    if @group.update(group_params)
+      redirect_to :group_page, notice: 'Group page was successfully updated.'
+    else
+      render :edit_group
+    end
+  end
+
+  def edit_about
+  end
+
+  def edit_media
+  end
+
+  def edit_group
+  end
+
   private
+
+  def set_group_vars
+    @full_width = true
+    @group = Group.find_by(id: params[:id])
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+  end
+
+  def set_group_id
+    @group = Group.find_by(id: params[:id])
+  end
 
   def group_params
     params.require(:group).permit(:name, :location, :description, :group_type, :about, :youtube_url, :soundcloud_url)

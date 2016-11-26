@@ -2,31 +2,49 @@
 
 <div id="group-header">
   <div id="group-header-container" class="container">
-    <div id="group-header-photo">
-      <%= image_tag @group.image_url.blank? ? "group_default.png" : @group.image_url %>
+    <div id="group-header-right">
+      <div id="group-header-photo">
+        <%= image_tag @group.image_url.blank? ? "group_default.png" : @group.image_url %>
+        <% if current_user && @group_admins.include?(current_user) %>
+          <div>Change image</div>
+        <% end %>
+      </div>
+      <div id="group-header-info">
+        <div id="group-header-name">
+          <%= @group.name %>
+        </div>
+        <div id="group-header-location">
+          <%= @group.location %>
+        </div>
+        <div id="group-header-description">
+          <%= @group.description %>
+        </div>
+      </div>
+    </div>
+    <div id="group-header-left">
+      <div id="group-header-members">
+        <div><i class="material-icons">person_pin</i></div>
+        <div>
+          <span><%= @group.users.length %></span>
+          <% if @group.users.length > 1 %>
+            <span>Members</span>
+          <% else %>
+            <span>Member</span>
+          <% end %>
+        </div>
+      </div>
+
       <% if current_user && @group_admins.include?(current_user) %>
-        <div>Change image</div>
-      <% end %>
-    </div>
-    <div id="group-header-info">
-      <div id="group-header-name">
-        <%= @group.name %>
-      </div>
-      <div id="group-header-location">
-        <%= @group.location %>
-      </div>
-      <div id="group-header-description">
-        <%= @group.description %>
+      <div id="group-header-edit">
+        <div class="button">
+          <%= link_to edit_group_path, id: "group-header-edit-button" do %>
+            <div>Edit Group &nbsp;</div>
+            <div><i class="material-icons">create</i></div>
+          <% end %>
+        </div>
       </div>
     </div>
-    <div id="group-header-members">
-      <span><%= @group.users.length %></span>
-      <% if @group.users.length > 1 %>
-        <span>Members</span>
-      <% else %>
-        <span>Member</span>
-      <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
 

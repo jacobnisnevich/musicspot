@@ -1,6 +1,18 @@
 <%= render partial: 'header', locals: {selected: 'media'} %>
 
 <div class="container">
+  <% if current_user && @group_admins.include?(current_user) %>
+    <div id="edit-media">
+      <div class="button">
+        <%= link_to edit_media_path, id: "edit-media-button" do %>
+          <div>Edit Media &nbsp;</div>
+          <div><i class="material-icons">create</i></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if defined? @soundcloud_embed_tracks %>
   <h1>SoundCloud Tracks</h1>
 
   <div id="soundcloud-tracks-list">
@@ -13,7 +25,9 @@
       </div>
     <% end %>
   </div>
+  <% end %>
 
+  <% if defined? @youtube_embed_tracks %>
   <h1>YouTube Tracks</h1>
 
   <div id="youtube-tracks-list">
@@ -26,4 +40,5 @@
       </div>
     <% end %>
   </div>
+  <% end %>
 </div>

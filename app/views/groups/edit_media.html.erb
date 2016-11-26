@@ -1,0 +1,41 @@
+<%= render partial: 'header', locals: {selected: 'media'} %>
+
+<div class="container">
+  <h1>Editing Media</h1>
+
+  <div class="back-button">
+    <div class="button">
+      <%= link_to :group_media do %>
+        <div><i class="material-icons">arrow_back</i></div>
+        <div>&nbsp; Back</div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= form_for @group, :url => { :controller => :groups, :action => :update_media} do |f| %>
+    <% if @group.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+        <ul>
+        <% @group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="edit-group-form">
+      <div>
+      <%= f.label :youtube_url, "URL to YouTube page" %>
+      <%= f.text_field :youtube_url, class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.label :soundcloud_url, "SoundCloud Username" %>
+      <%= f.text_field :soundcloud_url, class: 'form-control' %>
+    </div>
+      <div class="actions">
+        <%= f.submit "Edit Media", class: "button" %>
+      </div>
+    </div>
+  <% end %>
+</div>
