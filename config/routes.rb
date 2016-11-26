@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/group/:id/new_event', to: 'events#new'
   post '/group/:id/new_event', to: 'events#submit', as: 'event_create'
   get '/group/:id', to: 'groups#show', as: 'group_page'
+  get '/group/:id/edit', to: 'groups#edit_group', as: 'edit_group'
+  patch '/group/:id/edit', to: 'groups#update_group', as: 'update_group'
   get '/group/:id/members', to: 'groups#members', as: 'group_members'
   post '/group/:id', to:'announcements#create'
   get '/group/:id/announcement', to: 'announcements#new', as: 'new_announcement'

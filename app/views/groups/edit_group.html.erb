@@ -1,0 +1,49 @@
+<%= render partial: 'header', locals: {selected: 'newsfeed'} %>
+
+<div class="container">
+  <h1>Editing Group</h1>
+
+  <div class="back-button">
+    <div class="button">
+      <%= link_to :group_page do %>
+        <div><i class="material-icons">arrow_back</i></div>
+        <div>&nbsp; Back</div>
+      <% end %>
+    </div>
+  </div>
+
+  <%= form_for @group, :url => { :controller => :groups, :action => :update_group} do |f| %>
+    <% if @group.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+
+        <ul>
+        <% @group.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div id="edit-group-form">
+      <div>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div>
+        <%= f.label :location, "Zip code" %>
+        <%= f.text_field :location, class: 'form-control' %>
+      </div>
+      <div>
+        <%= f.label :group_type %>
+        <%= f.text_field :group_type, class: 'form-control' %>
+      </div>
+      <div>
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Edit Group", class: "button" %>
+      </div>
+    </div>
+  <% end %>
+</div>

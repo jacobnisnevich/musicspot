@@ -27,6 +27,17 @@
         <span>Member</span>
       <% end %>
     </div>
+
+    <% if current_user && @group_admins.include?(current_user) %>
+    <div id="group-edit-button">
+      <div class="button">
+        <%= link_to edit_group_path, id: "edit-about-button" do %>
+          <div>Edit Group &nbsp;</div>
+          <div><i class="material-icons">create</i></div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
   </div>
 </div>
 
