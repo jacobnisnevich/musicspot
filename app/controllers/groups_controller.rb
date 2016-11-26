@@ -148,7 +148,7 @@ class GroupsController < ApplicationController
 
   def update_group
     if @group.update(group_params)
-      redirect_to :group_page, notice: 'Media page was successfully updated.'
+      redirect_to :group_page, notice: 'Group page was successfully updated.'
     else
       render :edit_group
     end
