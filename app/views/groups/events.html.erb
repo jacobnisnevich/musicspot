@@ -1,6 +1,17 @@
 <%= render partial: 'header', locals: {selected: 'events'} %>
 
 <div class="container">
+  <% if current_user && @group_admins.include?(current_user) %>
+    <div id="group-events-new-button">
+      <div class="button">
+        <%= link_to "/group/#{@group.id}/new_event", id: "new-event-button" do %>
+          <div>New Event &nbsp;</div>
+          <div><i class="material-icons">event</i></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
   <h1>Scheduled Events</h1>
 
   <div id="group-events-results">
