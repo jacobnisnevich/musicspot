@@ -3,6 +3,33 @@
 <% else %>
   <h1>Get started now!</h1>
 
+  <div class="onboarding-panel">
+    <div class="onboarding-panel-item">
+      <div class="onboarding-panel-icon">
+        <%= image_tag "ic_person_black_24px.svg" %>
+      </div>
+      <div class="onboarding-panel-text">Build a Profile</div>
+    </div>
+    <div class="onboarding-panel-item">
+      <div class="onboarding-panel-icon">
+        <%= image_tag "ic_group_add_black_24px.svg" %>
+      </div>
+      <div class="onboarding-panel-text">Join a Group</div>
+    </div>
+    <div class="onboarding-panel-item">
+      <div class="onboarding-panel-icon">
+        <%= image_tag "ic_event_available_black_24px.svg" %>
+      </div>
+      <div class="onboarding-panel-text">Host an Event</div>
+    </div>
+    <div class="onboarding-panel-item">
+      <div class="onboarding-panel-icon">
+        <%= image_tag "ic_library_music_black_24px.svg" %>
+      </div>
+      <div class="onboarding-panel-text">Make Music!</div>
+    </div>
+  </div>
+
   <div class="center">
     <div class="button">
       <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
