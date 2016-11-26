@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post '/groups/change_image', to: 'groups#change_image'
 
   get '/events', to: 'events#home'
-  get 'event/:id', to: 'events#show', as: 'event_page'
+  get '/event/:id', to: 'events#show', as: 'event_page'
   post '/event/add_user', to: 'events#add_user'
   post '/event/remove_user', to: 'events#remove_user'
 
