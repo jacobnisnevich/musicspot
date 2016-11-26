@@ -3,6 +3,15 @@
 <div class="container">
   <h1>Create New Event</h1>
 
+  <div class="back-button">
+    <div class="button">
+      <%= link_to :group_events do %>
+        <div><i class="material-icons">arrow_back</i></div>
+        <div>&nbsp; Back</div>
+      <% end %>
+    </div>
+  </div>
+
   <%= form_for @event, :url => { :controller => :events, :action => :submit} do |f| %>
     <div id="new-event-form">
       <div class="form-group">
