@@ -4,7 +4,6 @@ class GoogleMapsAPI
   include HTTParty
   format :json
 
-
   base_uri 'maps.googleapis.com/maps/api/distancematrix'
 
   attr_accessor :distances, :durations
