@@ -51,34 +51,36 @@
 
     <div class="group-members-list">
       <% @group_members.each do |member| %>
-        <div class="group-member-item">
-          <div class="group-member-profile">
-            <div class="group-member-picture">
-              <%= image_tag "https://graph.facebook.com/#{member.uid}/picture?type=square" %>
+        <% if !@group_admins.include?(member) %>
+          <div class="group-member-item">
+            <div class="group-member-profile">
+              <div class="group-member-picture">
+                <%= image_tag "https://graph.facebook.com/#{member.uid}/picture?type=square" %>
+              </div>
+              <div class="group-member-name">
+                <%= member.name %>
+              </div>
             </div>
-            <div class="group-member-name">
-              <%= member.name %>
-            </div>
-          </div>
 
-          <div class="group-member-options">
-            <% if current_user && @group_admins.include?(current_user) %>
+            <div class="group-member-options">
+              <% if current_user && @group_admins.include?(current_user) %>
+                <div>
+                  <%= link_to remove_member_path(:id => @group.id, :user_id => member.id), method: :post do %>
+                  <i class="material-icons">clear</i>
+                  <% end %>
+                </div>
+                <div>
+                  <%= link_to add_admin_path(:id => @group.id, :user_id => member.id), method: :post do %>
+                  <i class="material-icons">person_add</i>
+                  <% end %>
+                </div>
+              <% end %>
               <div>
-                <%= link_to remove_member_path(:id => @group.id, :user_id => member.id), method: :post do %>
-                <i class="material-icons">clear</i>
-                <% end %>
+                <a href="/profile/<%= member.uid %>"><i class="material-icons">open_in_browser</i></a>
               </div>
-              <div>
-                <%= link_to add_admin_path(:id => @group.id, :user_id => member.id), method: :post do %>
-                <i class="material-icons">person_add</i>
-                <% end %>
-              </div>
-            <% end %>
-            <div>
-              <a href="/profile/<%= member.uid %>"><i class="material-icons">open_in_browser</i></a>
             </div>
           </div>
-        </div>
+          <% end %>
       <% end %>
     </div>
   </div>
