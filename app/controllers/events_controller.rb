@@ -33,6 +33,15 @@ class EventsController < ApplicationController
 
     @group = Group.find(@group_id)
     @group_admins = @group.admin_users
+
+    @group_availability = Array.new(168, 0)
+    @group.users.each do |user|
+      for i in 0..167 do
+        if user.profile.availability[i] == "1"
+          @group_availability[i] += 1
+        end
+      end
+    end
   end
 
   def submit

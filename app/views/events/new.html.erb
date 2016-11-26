@@ -37,6 +37,36 @@
           <%= datetime_select :event, :end_datetime %>
         </div>
       </div>
+      <div>
+        Scheduling Assistant: Here is how many of your group members are available at each time based upon the availabilities selected in their profiles.
+      </div>
+      <div class="time-availability-box">
+        <table class="time-availability-table">
+          <thead>
+            <th>Day</th>
+            <th>12:00 AM</th>
+            <% (1..11).each do |j| %>
+              <th><%= j %>:00 AM</th>
+            <% end %>
+            <th>12:00 PM</th>
+            <% (1..11).each do |j| %>
+              <th><%= j %>:00 PM</th>
+            <% end %>
+          </thead>
+          <tbody>
+          <% (0..6).each do |i| %>
+            <tr>
+              <td><%= Date::DAYNAMES[i] %></td>
+              <% (0..23).each do |j| %>
+                <td>
+                    <%= @group_availability[i*24 + j] %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
       <div class="form-group">
         <div class="label">
           <%= f.label :description %>
