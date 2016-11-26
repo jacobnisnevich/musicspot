@@ -68,7 +68,8 @@ class GroupsController < ApplicationController
     @group_members = @group.users
     @group_admins = @group.admin_users
 
-    @embed_tracks = SoundCloudAPI.get_tracks(@group.soundcloud_url)
+    @soundcloud_embed_tracks = SoundCloudAPI.get_tracks(@group.soundcloud_url).embed_tracks
+    @youtube_embed_tracks = YouTubeAPI.get_videos(@group.youtube_url).embed_videos
   end
 
   def apply
@@ -89,10 +90,10 @@ class GroupsController < ApplicationController
   end
 
   def reject
-      application = Application.find_by(user_id: params[:user_id], group_id: params[:id])
-      if application.destroy
-        redirect_to group_members_path
-      end
+    application = Application.find_by(user_id: params[:user_id], group_id: params[:id])
+    if application.destroy
+      redirect_to group_members_path
+    end
   end
 
   def accept
@@ -151,6 +152,6 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :location, :description, :group_type, :about)
+    params.require(:group).permit(:name, :location, :description, :group_type, :about, :youtube_url, :soundcloud_url)
   end
 end

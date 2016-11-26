@@ -9,7 +9,7 @@ class SoundCloudAPI
 
   def self.get_tracks(soundcloud_user)
     client = SoundCloud.new(:client_id => '02gUJC0hH2ct1EGOcYXQIzRFU91c72Ea')
-
+    
     tracks = client.get("/users/#{soundcloud_user}/tracks")
 
     track_urls = tracks.map {|track| track.permalink_url }

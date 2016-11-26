@@ -492,3 +492,22 @@
     }
   }
 }
+
+/* Group Page - Media */
+
+.soundcloud-track, .youtube-track {
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  background-color: #FFF;
+  border-radius: 3px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+    0 1px 5px 0 rgba(0,0,0,0.12),
+    0 3px 1px -2px rgba(0,0,0,0.2);
+
+  .soundcloud-track-date, .youtube-track-date {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+}

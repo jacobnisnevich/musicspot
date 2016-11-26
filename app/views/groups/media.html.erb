@@ -1,17 +1,29 @@
 <%= render partial: 'header', locals: {selected: 'about'} %>
 
 <div class="container">
-	<div id="soundcloud_tracks">
-	<h1>SoundCloud Tracks</h1>
+  <h1>SoundCloud Tracks</h1>
 
-	<% @embed_tracks.each do |track| %>
-		<%= track.date %>
-		<br>
-		<%= track.embed_html %>
-	<% end %>
-	</div>
+  <div id="soundcloud-tracks-list">
+    <% @soundcloud_embed_tracks.each do |track| %>
+      <div class="soundcloud-track">
+        <div class="soundcloud-track-date">
+          <i>(<%= time_ago_in_words(track[:date]) %> ago)</i>
+        </div>
+        <div class="soundcloud-track-body"><%= track[:embed_html].html_safe %></div>
+      </div>
+    <% end %>
+  </div>
 
-	<div id="youtube_tracks">
+  <h1>YouTube Tracks</h1>
 
-	</div>
+  <div id="youtube-tracks-list">
+    <% @youtube_embed_tracks.each do |track| %>
+      <div class="youtube-track">
+        <div class="youtube-track-date">
+          <i>(<%= time_ago_in_words(track[:date]) %> ago)</i>
+        </div>
+        <div class="youtube-track-body"><%= track[:embed_html].sub('width="480"', 'width="100%"').html_safe %></div>
+      </div>
+    <% end %>
+  </div>
 </div>
