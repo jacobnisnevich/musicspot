@@ -3,35 +3,87 @@
 <h1> <%= @event.name %> </h1>
 <div>
   <%= (image_tag @event.image, class: "event-image") unless @event.image.blank? %>
-  <div class="event-subtitle"> Location:
-    <span class="event-data"> <%= @event.location %> </span>
+
+  <div class="event-info-grid">
+    <div class="event-info">
+      <div class="event-info-title">
+        <div><i class="material-icons">location_on</i></div>
+        <div>Location</div>
+      </div>
+      <div class="event-info-data">
+        <span><%= @event.location %></span>
+      </div>
+    </div>
+
+    <div class="event-info">
+      <div class="event-info-title">
+        <div><i class="material-icons">group</i></div>
+        <div>Hosted By</div>
+      </div>
+      <div class="event-info-data">
+        <% @event.groups.each_with_index do |group, index| %>
+          <% if index != 0 %>
+            <span>, <%= group.name %></span>
+          <% else %>
+            <span><%= group.name %></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <% if @event.start_datetime %>
+    <div class="event-info">
+      <div class="event-info-title">
+        <div><i class="material-icons">date_range</i></div>
+        <div>Start</div>
+      </div>
+      <div class="event-info-data">
+        <span><%= @event.start_datetime.strftime("%B %-d, %Y, %l:%M%p") %></span>
+      </div>
+    </div>
+    <% end %>
+
+    <% if @event.start_datetime %>
+    <div class="event-info">
+      <div class="event-info-title">
+        <div><i class="material-icons">date_range</i></div>
+        <div>End</div>
+      </div>
+      <div class="event-info-data">
+        <span><%= @event.end_datetime.strftime("%B %-d, %Y, %l:%M%p") %></span>
+      </div>
+    </div>
+    <% end %>
   </div>
-  <% if @event.start_datetime %>
-    <div class="event-subtitle"> Start:
-      <span class="event-data"> <%= @event.start_datetime.strftime("%B %-d, %Y, %l:%M%p") %> </span>
+
+  <div class="event-info">
+    <div class="event-info-title">
+      <div><i class="material-icons">description</i></div>
+      <div>Description</div>
     </div>
-  <% end %>
-  <% if @event.end_datetime %>
-    <div class="event-subtitle"> End:
-      <span class="event-data"> <%= @event.end_datetime.strftime("%B %-d, %Y, %l:%M%p") %> </span>
+  </div>
+  <div class="event-description-box"><%= @event.description %></div>
+
+  <div class="event-info">
+    <div class="event-info-title">
+      <div><i class="material-icons">people</i></div>
+      <div>People Going</div>
     </div>
-  <% end %>
-  <div class="event-subtitle"> Description </div>
-  <div class="event-data"> <%= @event.description %> </div>
-  <div class="event-subtitle"> Hosted By </div>
-  <% @event.groups.each do |group| %>
-  	<div class="event-data"> <%= group.name %> </div>
-  <% end %>
-  <div class="event-subtitle"> People Going </div>
+  </div>
+
   <% @event.users.each do |user| %>
-    <div class="event-data"> <%= user.name %> </div>
+    <div class="event-member">
+      <div class="event-member-picture"><%= image_tag "https://graph.facebook.com/#{user.uid}/picture?type=square" %></div>
+      <div class="event-member-name"><%= user.name %></div>
+    </div>
   <% end %>
+
   <%=
     if current_user
       if @event.users.include?(current_user)
-        button_to 'Leave Event', '/event/remove_user', params: { event_id: @event.id }
+        button_to 'Leave Event', '/event/remove_user', id: 'event-action-button', params: { event_id: @event.id }
       else
-        button_to 'Join Event', '/event/add_user', params: { event_id: @event.id }
+        button_to 'Join Event', '/event/add_user', id: 'event-action-button', params: { event_id: @event.id }
       end
     end
   %>
