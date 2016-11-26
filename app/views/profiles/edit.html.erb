@@ -38,7 +38,7 @@
               <% (0..23).each do |j| %>
               <td>
                 <%= hidden_field_tag "hours[#{i*24 + j}]", 0 %>
-                <%= check_box_tag "hours[#{i*24 + j}]"%>       
+                <%= check_box_tag "hours[#{i*24 + j}]", 1, @profile.availability[(i*24) + j] == "1"%>       
               </td>
               <% end %>
             </tr>
