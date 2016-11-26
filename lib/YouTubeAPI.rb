@@ -12,7 +12,7 @@ class YouTubeAPI
 
     channel = Yt::Channel.new(url: youtube_url)
 
-    channel_videos = channel.videos
+    channel_videos = channel.videos.where(max_results: 5)
     video_embeds = channel_videos.map {|video| video.embed_html }
     video_dates = channel_videos.map {|video| Date.parse(video.snippet.data['publishedAt']) }
     

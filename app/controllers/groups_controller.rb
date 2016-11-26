@@ -1,4 +1,6 @@
 require 'GoogleMapsAPI'
+require 'SoundCloudAPI'
+require 'YouTubeAPI'
 require 'search/DistanceSort'
 require 'search/TimeSort'
 require 'will_paginate/array'
@@ -60,6 +62,16 @@ class GroupsController < ApplicationController
     end
   end
 
+  def media
+    @full_width = true
+    @group = Group.find_by(id: params[:id])
+    @group_members = @group.users
+    @group_admins = @group.admin_users
+
+    @soundcloud_embed_tracks = SoundCloudAPI.get_tracks(@group.soundcloud_url).embed_tracks
+    @youtube_embed_tracks = YouTubeAPI.get_videos(@group.youtube_url).embed_videos
+  end
+
   def apply
     application = Application.new
     application.group_id = params[:id]
@@ -78,10 +90,10 @@ class GroupsController < ApplicationController
   end
 
   def reject
-      application = Application.find_by(user_id: params[:user_id], group_id: params[:id])
-      if application.destroy
-        redirect_to group_members_path
-      end
+    application = Application.find_by(user_id: params[:user_id], group_id: params[:id])
+    if application.destroy
+      redirect_to group_members_path
+    end
   end
 
   def accept
@@ -140,6 +152,6 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :location, :description, :group_type, :about)
+    params.require(:group).permit(:name, :location, :description, :group_type, :about, :youtube_url, :soundcloud_url)
   end
 end
