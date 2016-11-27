@@ -501,11 +501,7 @@
 
 /* Group Page - Members */
 
-.group-admins-list {
-  
-}
-
-.group-member-item, .group-admin-item {
+.group-member-item, .group-admin-item, .pending-application-item {
   width: 100%;
   padding: 15px;
   box-sizing: border-box;
@@ -519,18 +515,18 @@
   display: flex;
   justify-content: space-between;
 
-  .group-admin-profile, .group-member-profile {
+  .group-admin-profile, .group-member-profile, .pending-application-profile {
     display: flex;
     align-items: center;
 
-    .group-admin-name, .group-member-name {
+    .group-admin-name, .group-member-name, .pending-application-name {
       font-family: 'Quicksand', sans-serif;
       font-size: 20px;
       margin-left: 20px; 
     }
   }
 
-  .group-admin-options, .group-member-options {
+  .group-admin-options, .group-member-options, .pending-application-options {
     display: flex;
     align-items: center;
 

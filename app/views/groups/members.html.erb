@@ -3,23 +3,34 @@
 <div class="container">
 
   <% if current_user && @group_admins.include?(current_user) %>
-    <div id="pending-applcations">
     <h1>Pending Applications</h1>
-        <% @applied_users.each do |user| %>
-        <div><%= user.name %></div>
-        <!-- reject/accept buttons -->
-        <div class='button'>
-        <%= link_to accept_application_path(:id => @group.id, :user_id => user.id), method: :post do %>
-                Accept
-        <% end %>
+    
+    <div id="pending-applications-list">
+      <% @applied_users.each do |user| %>
+      <div class="pending-application-item">
+        <div class="pending-application-profile">
+          <div class="pending-application-picture">
+            <%= image_tag "https://graph.facebook.com/#{user.uid}/picture?type=square" %>
+          </div>
+          <div class="pending-application-name">
+            <%= user.name %>
+          </div>
         </div>
 
-        <div class='button'>
-        <%= link_to reject_application_path(:id => @group.id, :user_id => user.id), method: :post do %>
-                Reject
-        <% end %>
+        <div class="pending-application-options">
+          <div>
+            <%= link_to accept_application_path(:id => @group.id, :user_id => user.id), method: :post do %>
+              <i class="material-icons">check</i>
+            <% end %>
+          </div>
+          <div>
+            <%= link_to reject_application_path(:id => @group.id, :user_id => user.id), method: :post do %>
+              <i class="material-icons">clear</i>
+            <% end %>
+          </div>
         </div>
-        <% end %>
+      </div>
+      <% end %>
     </div>
   <% end %>
 
