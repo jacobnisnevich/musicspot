@@ -54,7 +54,7 @@ class EventsController < ApplicationController
     elsif hour < 12
       @best_hour = hour.to_s + ":00 AM"
     else
-      @best_hour = (hour - 12) + ":00 PM"
+      @best_hour = (hour - 12).to_s + ":00 PM"
     end
 
   end
