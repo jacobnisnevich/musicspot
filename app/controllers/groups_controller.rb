@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
       @groups = Group.where("lower(name) LIKE ?", "%#{params[:name].downcase}%").to_a
     end
 
-    if !(params[:zip].blank?)
+    if !(params[:zip].blank?) && @groups.size > 0
       destinations_zips = @groups.map { |g| g.location }
       @destinations = GoogleMapsAPI.get_distances(params[:zip], destinations_zips)
       @strategy = params[:search]
@@ -27,6 +27,7 @@ class GroupsController < ApplicationController
       end
       @groups = strategy.sort(@groups, @destinations)
     end
+
     @num_results = @groups.size
     @groups = @groups.paginate(page: params[:page], :per_page => 10)
   end
