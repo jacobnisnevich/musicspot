@@ -14,7 +14,7 @@
 
   <% if !@group.about.nil? && !@group.about.blank? %>
     <div id="group-body">
-      <%= @group.about.html_safe %>
+      <%= simple_format(@group.about.html_safe) %>
     </div>
   <% end %>
 </div>
