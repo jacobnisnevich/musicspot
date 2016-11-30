@@ -8,7 +8,7 @@ class SoundCloudAPI
   end
 
   def self.get_tracks(soundcloud_user)
-    client = SoundCloud.new(:client_id => '02gUJC0hH2ct1EGOcYXQIzRFU91c72Ea')
+    client = SoundCloud.new(:client_id => '904452dbc187b8bc2f4a5a541c31a921')
     
     tracks = client.get("/users/#{soundcloud_user}/tracks")
 

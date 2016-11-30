@@ -58,7 +58,6 @@ class GroupsController < ApplicationController
   end
 
   def media
-
     if !@group.soundcloud_url.blank? && !@group.soundcloud_url.nil?
       @soundcloud_embed_tracks = SoundCloudAPI.get_tracks(@group.soundcloud_url).embed_tracks
     end
